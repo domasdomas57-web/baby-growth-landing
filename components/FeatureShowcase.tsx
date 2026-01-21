@@ -27,6 +27,39 @@ const FEATURES = [
 	},
 ] as const;
 
+const FEATURE_DETAILS: Record<
+	(typeof FEATURES)[number]["title"],
+	{ more: string; bullets?: readonly string[] }
+> = {
+	"Sleep Predictions": {
+		more:
+			"Know what’s coming next and plan your day with more confidence. Predictions adapt as your baby’s routine changes, so you spend less time guessing and more time resting.",
+		bullets: [
+			"See the next nap window at a glance",
+			"Spot patterns across days, not just today",
+			"Reduce overtired meltdowns with better timing",
+		],
+	},
+	"Growth Tracking": {
+		more:
+			"Keep a clear record of height, weight, and head circumference over time. Visual charts make it easy to notice trends early and share updates during checkups.",
+		bullets: [
+			"Clean charts that are easy to read",
+			"Track multiple measurements together",
+			"Perfect for quick pediatrician updates",
+		],
+	},
+	"AI Insights": {
+		more:
+			"Turn daily logs into useful signals. AI helps highlight what’s working, what’s changing, and where small adjustments can make your routine smoother.",
+		bullets: [
+			"Highlights patterns in sleep and feeding",
+			"Find routine shifts sooner",
+			"Actionable insights, not noise",
+		],
+	},
+};
+
 export default function FeatureShowcase() {
 	return (
 		<section className="relative overflow-hidden" aria-label="Feature showcase">
@@ -37,46 +70,47 @@ export default function FeatureShowcase() {
 			</div>
 
 			<div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 sm:py-20">
-				<div className="space-y-8 sm:space-y-10">
+				<div className="space-y-12 sm:space-y-16">
 					{FEATURES.map((feature, index) => {
 						const isReversed = index % 2 === 1;
+						const details = FEATURE_DETAILS[feature.title];
 
 						return (
 							<motion.div
 								key={feature.title}
-								initial={{ opacity: 0, y: 18 }}
+								initial={{ opacity: 0, y: 22 }}
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true, amount: 0.35 }}
 								transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-								className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.06] shadow-[0_18px_70px_-40px_rgba(0,0,0,0.85)] backdrop-blur"
+								className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-[0_26px_90px_-60px_rgba(0,0,0,0.90)] backdrop-blur"
 							>
 								<div className="absolute inset-0 -z-10 bg-gradient-to-br from-sky-400/10 via-violet-400/10 to-fuchsia-300/10" />
 
 								<div
-									className={`grid gap-8 p-6 sm:p-10 md:grid-cols-2 md:items-center ${
-										isReversed ? "md:[&>*:first-child]:order-2" : ""
+									className={`grid gap-10 p-6 sm:p-10 lg:grid-cols-2 lg:items-center ${
+										isReversed ? "lg:[&>*:first-child]:order-2" : ""
 									}`}
 								>
 									<motion.div
-										initial={{ opacity: 0, x: isReversed ? 18 : -18 }}
+										initial={{ opacity: 0, x: isReversed ? 20 : -20 }}
 										whileInView={{ opacity: 1, x: 0 }}
 										viewport={{ once: true, amount: 0.45 }}
 										transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-										className="mx-auto w-full max-w-[420px]"
+										className={`flex w-full items-center justify-center ${
+											isReversed ? "lg:justify-end" : "lg:justify-start"
+										}`}
 									>
 										<motion.div
 											animate={{ y: [0, -8, 0] }}
 											transition={{
-												duration: 7.5,
+												duration: 8.5,
 												repeat: Infinity,
 												ease: "easeInOut",
 											}}
-											className="pointer-events-none"
+											className="pointer-events-none w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[320px]"
 										>
 											<div className="relative">
-												<div className="absolute -inset-6 -z-10 rounded-[34px] bg-gradient-to-br from-sky-400/12 via-violet-400/10 to-fuchsia-300/10 blur-2xl" />
-
-												<div className="rounded-[36px] border border-white/10 bg-slate-950/90 p-[10px] shadow-[0_30px_110px_-55px_rgba(0,0,0,0.95)]">
+												<div className="rounded-[34px] border border-white/10 bg-slate-950/90 p-[10px] shadow-[0_26px_90px_-58px_rgba(0,0,0,0.95)]">
 													<div className="relative overflow-hidden rounded-[28px] bg-black shadow-[0_18px_60px_-32px_rgba(0,0,0,0.85)]">
 														<div className="absolute left-1/2 top-0 z-10 h-6 w-[120px] -translate-x-1/2 rounded-b-[18px] bg-slate-950" />
 														<div className="absolute left-1/2 top-[7px] z-10 h-[4px] w-10 -translate-x-1/2 rounded-full bg-white/15" />
@@ -99,18 +133,31 @@ export default function FeatureShowcase() {
 									</motion.div>
 
 									<motion.div
-										initial={{ opacity: 0, x: isReversed ? -18 : 18 }}
+										initial={{ opacity: 0, x: isReversed ? -20 : 20 }}
 										whileInView={{ opacity: 1, x: 0 }}
 										viewport={{ once: true, amount: 0.45 }}
 										transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-										className="text-center md:text-left"
+										className="text-center lg:text-left"
 									>
-										<h3 className="text-balance text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-											{feature.title}
-										</h3>
-										<p className="mt-3 text-pretty text-sm leading-relaxed text-slate-200/80 sm:text-base">
-											{feature.description}
-										</p>
+										<div className="mx-auto max-w-2xl rounded-2xl border border-white/10 bg-white/[0.04] px-6 py-6 shadow-[0_14px_50px_-36px_rgba(0,0,0,0.85)] backdrop-blur sm:px-7 sm:py-7 lg:mx-0">
+											<h3 className="text-balance text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+												{feature.title}
+											</h3>
+											<p className="mt-3 text-pretty text-sm leading-relaxed text-slate-200/80 sm:text-base">
+												{feature.description} {details.more}
+											</p>
+
+											{details.bullets ? (
+												<ul className="mt-5 space-y-2 text-left text-sm text-slate-200/75">
+													{details.bullets.map((item) => (
+														<li key={item} className="flex gap-3">
+															<span className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-white/35" />
+															<span className="leading-relaxed">{item}</span>
+														</li>
+													))}
+												</ul>
+											) : null}
+										</div>
 									</motion.div>
 								</div>
 							</motion.div>
