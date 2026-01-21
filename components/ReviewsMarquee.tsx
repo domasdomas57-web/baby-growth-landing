@@ -66,12 +66,12 @@ function Stars({ count = 5 }: { count?: number }) {
 
 function ReviewCard({ review }: { review: Review }) {
   return (
-    <article className="h-full w-[260px] shrink-0 rounded-2xl border border-white/10 bg-white/[0.04] p-5 shadow-[0_22px_70px_-52px_rgba(0,0,0,0.95)] backdrop-blur sm:w-[300px]">
+    <article className="flex min-h-[210px] w-[260px] shrink-0 flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-5 shadow-[0_22px_70px_-52px_rgba(0,0,0,0.95)] backdrop-blur sm:min-h-[220px] sm:w-[300px]">
       <Stars count={review.rating} />
-      <p className="mt-3 text-sm leading-relaxed text-slate-200/80">
+      <p className="mt-3 text-sm leading-relaxed text-slate-200/80 [display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical] overflow-hidden">
         {review.text}
       </p>
-      <div className="mt-4 flex items-center justify-between gap-4">
+      <div className="mt-auto flex items-center justify-between gap-4 pt-4">
         <p className="text-sm font-medium text-white/85">{review.name}</p>
         <a
           href={GOOGLE_PLAY_URL}
