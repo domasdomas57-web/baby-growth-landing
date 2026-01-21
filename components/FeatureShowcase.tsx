@@ -81,7 +81,7 @@ track.style.transform = "translateX(0px)";
 const maxOffset = Math.max(0, track.scrollWidth - viewport.clientWidth);
 if (maxOffset <= 0) return;
 
-const duration = Math.max(10, maxOffset / 70);
+const duration = Math.max(7, maxOffset / 120);
 controls = animate(0, -maxOffset, {
 duration,
 repeat: Infinity,
