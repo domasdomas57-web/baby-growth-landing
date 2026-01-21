@@ -137,6 +137,15 @@ return (
 </div>
 
 <div className="w-full px-5 py-14 sm:px-6 sm:py-20 lg:px-10 2xl:px-16">
+<div className="mb-10 text-center sm:mb-12">
+<h2 className="text-balance text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+Built for everyday tracking
+</h2>
+<p className="mx-auto mt-2 max-w-2xl text-pretty text-sm leading-relaxed text-slate-200/70 sm:text-base">
+Sleep predictions, growth charts, and AI insights—designed to help you feel confident, fast.
+</p>
+</div>
+
 <div className="grid gap-6 md:grid-cols-3 md:gap-8">
 {FEATURES.map((feature) => {
 const details = FEATURE_DETAILS[feature.title];
