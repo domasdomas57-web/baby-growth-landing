@@ -33,6 +33,40 @@ function GooglePlayIcon(props: SVGProps<SVGSVGElement>) {
 	);
 }
 
+type PhoneMockProps = {
+	src: string;
+	alt: string;
+	priority?: boolean;
+	className?: string;
+};
+
+function PhoneMock({ src, alt, priority, className }: PhoneMockProps) {
+	return (
+		<div className={`pointer-events-none ${className ?? ""}`.trim()}>
+			<div className="rounded-[36px] border border-white/10 bg-slate-950/95 p-[10px] shadow-[0_34px_110px_-52px_rgba(0,0,0,0.95)]">
+				<div className="relative overflow-hidden rounded-[28px] bg-black">
+					{/* Notch */}
+					<div className="absolute left-1/2 top-0 z-10 h-6 w-[120px] -translate-x-1/2 rounded-b-[18px] bg-slate-950 shadow-[0_1px_0_rgba(255,255,255,0.08)]" />
+					<div className="absolute left-1/2 top-[7px] z-10 h-[4px] w-10 -translate-x-1/2 rounded-full bg-white/15" />
+
+					<div className="relative aspect-[9/19] w-full">
+						<Image
+							src={src}
+							alt={alt}
+							fill
+							priority={priority}
+							sizes="(min-width: 1024px) 520px, 90vw"
+							className="object-cover object-top"
+						/>
+					</div>
+
+					<div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12),inset_0_-18px_42px_rgba(0,0,0,0.34)]" />
+				</div>
+			</div>
+		</div>
+	);
+}
+
 export default function Hero() {
 	return (
 		<section className="relative overflow-hidden" aria-labelledby="hero-title">
@@ -66,10 +100,10 @@ export default function Hero() {
 						<div className="mt-7 flex flex-col items-stretch gap-2 sm:items-center lg:items-start">
 							<a
 								href={GOOGLE_PLAY_URL}
-								className="inline-flex w-full max-w-[200px] items-center justify-center gap-3 rounded-md bg-black px-4 py-3 text-white shadow-sm ring-1 ring-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7DD3FC]"
+								className="relative isolate inline-flex w-full max-w-[200px] items-center justify-start gap-3 rounded-md bg-black pl-3 pr-4 py-3 text-white ring-1 ring-white/20 shadow-[0_12px_30px_-12px_rgba(0,0,0,0.85),0_0_0_1px_rgba(255,255,255,0.06),0_0_24px_rgba(125,211,252,0.22),0_0_32px_rgba(196,181,253,0.18),0_0_36px_rgba(246,166,193,0.16)] before:absolute before:inset-0 before:-z-10 before:rounded-md before:bg-gradient-to-r before:from-[#7DD3FC]/70 before:via-[#C4B5FD]/65 before:to-[#F6A6C1]/70 before:blur-lg before:content-[''] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7DD3FC]"
 								aria-label="Download on Google Play"
 							>
-								<GooglePlayIcon className="h-6 w-6" />
+								<GooglePlayIcon className="h-7 w-7" />
 								<span className="flex flex-col items-start leading-none">
 									<span className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/70">
 										Get it on
@@ -94,19 +128,18 @@ export default function Hero() {
 
 					<div className="relative mx-auto w-full max-w-[360px] sm:max-w-[400px] lg:max-w-[520px]">
 						<div className="absolute -inset-6 -z-10 rounded-[32px] bg-gradient-to-br from-[#7DD3FC]/15 via-[#C4B5FD]/10 to-[#F6A6C1]/10 blur-2xl" />
-						<div className="rounded-[28px] border border-white/10 bg-white/10 p-2 shadow-sm backdrop-blur sm:p-3">
-							<div className="relative w-full overflow-hidden rounded-[20px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.10),inset_0_-16px_36px_rgba(0,0,0,0.28)]">
-								<div className="relative aspect-[9/16] w-full">
-									<Image
-										src="/screenshots/app-home.png"
-										alt="Baby Growth Tracker – AI app screen mockup"
-										fill
-										priority
-										sizes="(min-width: 1024px) 520px, 90vw"
-										className="object-cover object-top"
-									/>
-								</div>
-							</div>
+						<div className="relative mx-auto flex w-full flex-col items-center justify-center gap-6 sm:flex-row sm:items-end sm:gap-0">
+							<PhoneMock
+								src="/screenshots/app-stats.png"
+								alt="Baby Growth Tracker – AI app stats screen"
+								className="relative w-full max-w-[360px] sm:w-[48%]"
+							/>
+							<PhoneMock
+								src="/screenshots/app-home.png"
+								alt="Baby Growth Tracker – AI app home screen"
+								priority
+								className="relative z-10 w-full max-w-[360px] sm:w-[56%] sm:-ml-6 sm:scale-[1.04]"
+							/>
 						</div>
 					</div>
 				</div>
