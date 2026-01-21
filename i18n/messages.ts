@@ -32,12 +32,18 @@ export type Messages = {
     googlePlay: string;
   };
   footer: {
+    brand: string;
+    description: string;
+    googlePlayCta: string;
     contactLinePrefix: string;
     email: string;
     emailAria: string;
     copyright: string;
+    bottomNote: string;
   };
   featureShowcase: {
+    heading: string;
+    subtitle: string;
     tabs: Array<{ title: string; description: string; more: string }>;
     learnMoreHeadingPrefix: string;
     close: string;
@@ -104,12 +110,20 @@ const en: Messages = {
     googlePlay: "Google Play",
   },
   footer: {
+    brand: "Baby Growth Tracker – AI",
+    description:
+      "Track sleep, feeding, and growth with AI insights—built for calm, consistent routines.",
+    googlePlayCta: "Get it on Google Play",
     contactLinePrefix: "Have a question? Contact us -",
     email: "infobysoriva@gmail.com",
     emailAria: "Email support",
     copyright: "© {year} Baby Growth Tracker – AI",
+    bottomNote: "Made for parents. Privacy-first.",
   },
   featureShowcase: {
+    heading: "Built for everyday tracking",
+    subtitle:
+      "Sleep predictions, growth charts, and AI insights—designed to help you feel confident, fast.",
     learnMoreHeadingPrefix: "Learn more",
     close: "Close",
     tabs: [
@@ -189,12 +203,20 @@ const lt: Messages = {
     googlePlay: "Google Play",
   },
   footer: {
+    brand: "Baby Growth Tracker – AI",
+    description:
+      "Sekite miegą, maitinimą ir augimą su AI įžvalgomis — ramiai ir nuosekliai kasdien.",
+    googlePlayCta: "Gauti Google Play",
     contactLinePrefix: "Turite klausimų? Susisiekite -",
     email: "infobysoriva@gmail.com",
     emailAria: "Parašyti el. paštu",
     copyright: "© {year} Baby Growth Tracker – AI",
+    bottomNote: "Sukurta tėvams. Privatumas pirmiausia.",
   },
   featureShowcase: {
+    heading: "Sukurta kasdieniam sekimui",
+    subtitle:
+      "Miego prognozės, augimo grafikai ir AI įžvalgos — kad jaustumėtės užtikrintai greičiau.",
     learnMoreHeadingPrefix: "Sužinok daugiau",
     close: "Uždaryti",
     tabs: [

@@ -5,10 +5,14 @@ export default function Footer({
   messages,
 }: {
   messages: {
+    brand: string;
+    description: string;
+    googlePlayCta: string;
     contactLinePrefix: string;
     email: string;
     emailAria: string;
     copyright: string;
+    bottomNote: string;
   };
 }) {
   const year = new Date().getFullYear();
@@ -25,9 +29,9 @@ export default function Footer({
       <div className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-6 sm:py-12">
         <div className="grid gap-8 sm:grid-cols-2 sm:items-start">
           <div>
-            <p className="text-base font-semibold tracking-tight">Baby Growth Tracker – AI</p>
+            <p className="text-base font-semibold tracking-tight">{messages.brand}</p>
             <p className="mt-2 max-w-md text-sm leading-relaxed text-slate-200/70">
-              Track sleep, feeding, and growth with AI insights—built for calm, consistent routines.
+              {messages.description}
             </p>
 
             <a
@@ -36,7 +40,7 @@ export default function Footer({
               rel="noreferrer"
               className="mt-5 inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_60px_-44px_rgba(0,0,0,0.95)] backdrop-blur transition hover:border-white/25 hover:bg-white/[0.06]"
             >
-              Get it on Google Play
+              {messages.googlePlayCta}
             </a>
           </div>
 
@@ -54,7 +58,7 @@ export default function Footer({
 
         <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-slate-200/55 sm:flex-row sm:items-center sm:justify-between">
           <p>{copyright}</p>
-          <p>Made for parents. Privacy-first.</p>
+          <p>{messages.bottomNote}</p>
         </div>
       </div>
     </footer>

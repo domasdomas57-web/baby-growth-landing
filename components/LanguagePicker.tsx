@@ -8,17 +8,27 @@ import {
 } from "@/i18n/locales";
 import type { Messages } from "@/i18n/messages";
 
-const FLAGS: Record<Locale, string> = {
-  en: "🇬🇧",
-  lt: "🇱🇹",
-  es: "🇪🇸",
-  fr: "🇫🇷",
-  de: "🇩🇪",
-  it: "🇮🇹",
-  pt: "🇵🇹",
-  pl: "🇵🇱",
-  ru: "🇷🇺",
+const FLAG_ICONS: Record<Locale, string> = {
+  en: "gb",
+  lt: "lt",
+  es: "es",
+  fr: "fr",
+  de: "de",
+  it: "it",
+  pt: "pt",
+  pl: "pl",
+  ru: "ru",
 };
+
+function Flag({ code }: { code: string }) {
+  return (
+    <span
+      aria-hidden
+      className={`fi fi-${code} block overflow-hidden rounded-full`}
+      style={{ width: 24, height: 24, backgroundSize: "cover" }}
+    />
+  );
+}
 
 export default function LanguagePicker({
   locale,
@@ -85,9 +95,7 @@ export default function LanguagePicker({
           "hover:border-white/20 hover:bg-slate-950/55 focus:outline-none focus:ring-2 focus:ring-white/25"
         }
       >
-        <span aria-hidden className="leading-none">
-          {FLAGS[locale]}
-        </span>
+        <Flag code={FLAG_ICONS[locale]} />
       </button>
 
       {isOpen ? (
@@ -115,9 +123,7 @@ export default function LanguagePicker({
                       : "border-white/10 bg-white/[0.03] hover:bg-white/[0.07]")
                   }
                 >
-                  <span aria-hidden className="leading-none">
-                    {FLAGS[l]}
-                  </span>
+                  <Flag code={FLAG_ICONS[l]} />
                 </button>
               );
             })}
