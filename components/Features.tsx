@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import type { Messages } from "@/i18n/messages";
 
 function FeatureIcon({ children }: { children: ReactNode }) {
 	return (
@@ -8,15 +9,8 @@ function FeatureIcon({ children }: { children: ReactNode }) {
 	);
 }
 
-const FEATURES: Array<{
-	title: string;
-	description: string;
-	icon: ReactNode;
-}> = [
+const FEATURE_ICONS: ReactNode[] = [
 	{
-		title: "Sleep tracking",
-		description:
-			"Log naps and nighttime sleep in seconds, then review patterns by day or week.",
 		icon: (
 			<svg
 				viewBox="0 0 24 24"
@@ -40,11 +34,8 @@ const FEATURES: Array<{
 				/>
 			</svg>
 		),
-	},
+	}.icon,
 	{
-		title: "Feeding tracking",
-		description:
-			"Track breast, bottle, solids, and quantities with quick presets and notes.",
 		icon: (
 			<svg
 				viewBox="0 0 24 24"
@@ -73,11 +64,8 @@ const FEATURES: Array<{
 				/>
 			</svg>
 		),
-	},
+	}.icon,
 	{
-		title: "AI insights & warnings",
-		description:
-			"Gentle summaries plus smarter alerts when something looks off—without panic.",
 		icon: (
 			<svg
 				viewBox="0 0 24 24"
@@ -112,11 +100,8 @@ const FEATURES: Array<{
 				/>
 			</svg>
 		),
-	},
+	}.icon,
 	{
-		title: "Growth charts",
-		description:
-			"See weight and height trends with clean charts and quick milestone snapshots.",
 		icon: (
 			<svg
 				viewBox="0 0 24 24"
@@ -146,11 +131,8 @@ const FEATURES: Array<{
 				/>
 			</svg>
 		),
-	},
+	}.icon,
 	{
-		title: "Multiple caregivers",
-		description:
-			"Share your baby profile with caregivers so everyone stays in sync and informed.",
 		icon: (
 			<svg
 				viewBox="0 0 24 24"
@@ -185,30 +167,30 @@ const FEATURES: Array<{
 				/>
 			</svg>
 		),
-	},
+	}.icon,
 ];
 
-export default function Features() {
+export default function Features({ messages }: { messages: Messages["features"] }) {
 	return (
 		<section className="mx-auto max-w-6xl px-5 py-12 sm:px-6 sm:py-16" id="features">
 			<div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-[0_22px_70px_-52px_rgba(0,0,0,0.95)] backdrop-blur sm:p-10">
 				<div className="mx-auto max-w-2xl text-center">
 					<h2 className="text-balance text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-						Everything you need for baby tracking
+						{messages.title}
 					</h2>
 					<p className="mt-3 text-pretty text-sm leading-relaxed text-slate-200/70 sm:text-base">
-						Sleep, feeding, growth, and caregiver collaboration—wrapped in a calm, trustworthy experience.
+						{messages.subtitle}
 					</p>
 				</div>
 
 				<div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-					{FEATURES.map((feature) => (
+					{messages.items.map((feature, idx) => (
 						<div
-							key={feature.title}
+							key={`${feature.title}-${idx}`}
 							className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur"
 						>
 							<div className="flex items-start gap-4">
-								<FeatureIcon>{feature.icon}</FeatureIcon>
+								<FeatureIcon>{FEATURE_ICONS[idx]}</FeatureIcon>
 								<div>
 									<h3 className="text-sm font-semibold text-white">
 										{feature.title}

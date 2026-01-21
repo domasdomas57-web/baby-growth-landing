@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { SVGProps } from "react";
+import type { Messages } from "@/i18n/messages";
 
 const GOOGLE_PLAY_URL =
 	"https://play.google.com/store/apps/details?id=com.domce23.babygrowthtracker&hl=en";
@@ -67,7 +68,7 @@ function PhoneMock({ src, alt, priority, className }: PhoneMockProps) {
 	);
 }
 
-export default function Hero() {
+export default function Hero({ messages }: { messages: Messages["hero"] }) {
 	return (
 		<section className="relative overflow-hidden" aria-labelledby="hero-title">
 			<div className="absolute inset-0 -z-10">
@@ -100,7 +101,7 @@ export default function Hero() {
 					<div className="text-center lg:text-left">
 						<div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs font-medium text-white/80 shadow-sm backdrop-blur md:mx-0">
 							<span className="inline-block h-2 w-2 rounded-full bg-[#7DD3FC]" />
-							AI-powered baby care insights
+							{messages.badge}
 						</div>
 
 						<h1
@@ -111,14 +112,14 @@ export default function Hero() {
 						</h1>
 
 						<p className="mt-4 text-pretty text-base leading-relaxed text-slate-200/80 sm:text-lg">
-							Track sleep • feeding • growth with AI insights
+							{messages.tagline}
 						</p>
 
 						<div className="mt-7 flex flex-col items-stretch gap-2 sm:items-center lg:items-start">
 							<a
 								href={GOOGLE_PLAY_URL}
 								className="relative isolate inline-flex w-full max-w-[200px] rounded-md p-[1px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7DD3FC]"
-								aria-label="Download on Google Play"
+								aria-label={messages.googlePlayAria}
 							>
 								<span
 									aria-hidden="true"
@@ -132,24 +133,24 @@ export default function Hero() {
 									<GooglePlayIcon className="h-7 w-7" />
 									<span className="flex flex-col items-start leading-none">
 										<span className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/70">
-											Get it on
+											{messages.getItOn}
 										</span>
-										<span className="text-base font-semibold">Google Play</span>
+										<span className="text-base font-semibold">{messages.googlePlay}</span>
 									</span>
 								</span>
 							</a>
 
 							<div className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-2.5 text-xs text-white/75 shadow-sm backdrop-blur sm:w-auto">
 								<div className="flex items-center gap-2">
-									<span className="font-medium text-white/90">Private by design</span>
+									<span className="font-medium text-white/90">{messages.privacyTitle}</span>
 									<span className="text-white/60">•</span>
-									<span className="text-white/70">Sync across devices.</span>
+									<span className="text-white/70">{messages.privacySubtitle}</span>
 								</div>
 							</div>
 						</div>
 
 						<p className="mt-4 text-xs text-slate-200/60">
-							No ads in core tracking. Designed for one-handed use.
+							{messages.noAdsNote}
 						</p>
 					</div>
 

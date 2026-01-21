@@ -1,8 +1,18 @@
 const GOOGLE_PLAY_URL =
   "https://play.google.com/store/apps/details?id=com.domce23.babygrowthtracker&hl=en";
 
-export default function Footer() {
+export default function Footer({
+  messages,
+}: {
+  messages: {
+    contactLinePrefix: string;
+    email: string;
+    emailAria: string;
+    copyright: string;
+  };
+}) {
   const year = new Date().getFullYear();
+  const copyright = messages.copyright.replace("{year}", String(year));
 
   return (
     <footer className="relative overflow-hidden border-t border-white/10 bg-slate-950 text-white">
@@ -31,18 +41,19 @@ export default function Footer() {
           </div>
 
           <p className="text-sm text-slate-200/70 sm:justify-self-end sm:text-right">
-            Have a question? Contact us -{" "}
+            {messages.contactLinePrefix}{" "}
             <a
-              href="mailto:infobysoriva@gmail.com"
+              href={`mailto:${messages.email}`}
+              aria-label={messages.emailAria}
               className="text-slate-200/75 underline decoration-white/20 underline-offset-4 transition hover:text-white"
             >
-              infobysoriva@gmail.com
+              {messages.email}
             </a>
           </p>
         </div>
 
         <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-slate-200/55 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} Baby Growth Tracker – AI</p>
+          <p>{copyright}</p>
           <p>Made for parents. Privacy-first.</p>
         </div>
       </div>

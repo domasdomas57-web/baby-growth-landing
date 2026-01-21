@@ -1,3 +1,5 @@
+import type { Messages } from "@/i18n/messages";
+
 const GOOGLE_PLAY_URL =
 	"https://play.google.com/store/apps/details?id=com.domce23.babygrowthtracker&hl=en";
 
@@ -5,6 +7,9 @@ type CTAProps = {
 	title?: string;
 	description?: string;
 	note?: string;
+	googlePlayAria?: string;
+	getItOn?: string;
+	googlePlayLabel?: string;
 	className?: string;
 };
 
@@ -40,8 +45,17 @@ function GooglePlayIcon() {
 	);
 }
 
-export default function CTA() {
-	return <CTASection />;
+export default function CTA({ messages }: { messages: Messages["cta"] }) {
+	return (
+		<CTASection
+			title={messages.title}
+			description={messages.description}
+			note={messages.note}
+			googlePlayAria={messages.downloadAria}
+			getItOn={messages.getItOn}
+			googlePlayLabel={messages.googlePlay}
+		/>
+	);
 }
 
 export function CTASection({
@@ -49,6 +63,9 @@ export function CTASection({
 	description =
 		"Download Baby Growth Tracker – AI to track sleep, feeding, and growth with AI insights and gentle warnings.",
 	note = "Fast setup • Multiple caregivers • Privacy-first",
+	googlePlayAria = "Download on Google Play",
+	getItOn = "Get it on",
+	googlePlayLabel = "Google Play",
 	className,
 }: CTAProps) {
 	return (
@@ -75,12 +92,12 @@ export function CTASection({
 						<a
 							href={GOOGLE_PLAY_URL}
 							className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl bg-white px-6 py-4 text-base font-semibold text-black shadow-sm ring-1 ring-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
-							aria-label="Download on Google Play"
+							aria-label={googlePlayAria}
 						>
 							<GooglePlayIcon />
 							<span className="flex flex-col items-start leading-none">
-								<span className="text-[11px] font-medium opacity-80">Get it on</span>
-								<span className="text-base">Google Play</span>
+								<span className="text-[11px] font-medium opacity-80">{getItOn}</span>
+								<span className="text-base">{googlePlayLabel}</span>
 							</span>
 						</a>
 						<p className="text-xs text-white/60">{note}</p>

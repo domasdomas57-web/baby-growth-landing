@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useReducedMotion, useAnimationFrame } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
+import type { Messages } from "@/i18n/messages";
 
 type Review = {
   rating: 5;
@@ -64,7 +65,13 @@ function Stars({ count = 5 }: { count?: number }) {
   );
 }
 
-function ReviewCard({ review }: { review: Review }) {
+function ReviewCard({
+  review,
+  viewOnGooglePlayAria,
+}: {
+  review: Review;
+  viewOnGooglePlayAria: string;
+}) {
   return (
     <article className="flex min-h-[210px] w-[260px] shrink-0 flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-5 shadow-[0_22px_70px_-52px_rgba(0,0,0,0.95)] backdrop-blur sm:min-h-[220px] sm:w-[300px]">
       <Stars count={review.rating} />
@@ -77,7 +84,7 @@ function ReviewCard({ review }: { review: Review }) {
           href={GOOGLE_PLAY_URL}
           target="_blank"
           rel="noreferrer"
-          aria-label="View on Google Play"
+          aria-label={viewOnGooglePlayAria}
           className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.02] p-1.5 opacity-90 shadow-[0_10px_30px_-24px_rgba(0,0,0,0.90)] backdrop-blur transition hover:opacity-100"
         >
           <GooglePlayIcon className="h-4 w-4" />
@@ -87,7 +94,7 @@ function ReviewCard({ review }: { review: Review }) {
   );
 }
 
-export default function ReviewsMarquee() {
+export default function ReviewsMarquee({ messages }: { messages: Messages["reviews"] }) {
   const shouldReduceMotion = useReducedMotion();
   const [isHovered, setIsHovered] = useState(false);
 
@@ -160,7 +167,7 @@ export default function ReviewsMarquee() {
   });
 
   return (
-    <section className="relative overflow-hidden" aria-label="Reviews">
+    <section className="relative overflow-hidden" aria-label={messages.aria}>
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-indigo-950/70 to-slate-950" />
         <div className="absolute inset-0 bg-gradient-to-br from-sky-400/5 via-violet-400/5 to-fuchsia-300/5" />
@@ -170,10 +177,10 @@ export default function ReviewsMarquee() {
       <div className="w-full px-5 py-12 sm:px-6 sm:py-16 lg:px-10 2xl:px-16">
         <div className="mb-8 text-center">
           <h2 className="text-balance text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-            Loved by parents
+            {messages.title}
           </h2>
           <p className="mx-auto mt-2 max-w-2xl text-pretty text-sm leading-relaxed text-slate-200/70 sm:text-base">
-            A few words from people using the app every day.
+            {messages.subtitle}
           </p>
         </div>
 
@@ -192,14 +199,22 @@ export default function ReviewsMarquee() {
             >
               <div ref={setRef} className="flex items-stretch gap-4 sm:gap-5">
                 {reviews.map((review, idx) => (
-                  <ReviewCard key={`a-${idx}`} review={review} />
+                  <ReviewCard
+                    key={`a-${idx}`}
+                    review={review}
+                    viewOnGooglePlayAria={messages.viewOnGooglePlayAria}
+                  />
                 ))}
               </div>
 
               {/* Duplicate set for seamless loop */}
               <div aria-hidden className="flex items-stretch gap-4 sm:gap-5">
                 {reviews.map((review, idx) => (
-                  <ReviewCard key={`b-${idx}`} review={review} />
+                  <ReviewCard
+                    key={`b-${idx}`}
+                    review={review}
+                    viewOnGooglePlayAria={messages.viewOnGooglePlayAria}
+                  />
                 ))}
               </div>
             </motion.div>
