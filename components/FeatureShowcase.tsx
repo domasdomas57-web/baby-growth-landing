@@ -1,7 +1,8 @@
 ﻿"use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useId, useState } from "react";
 
 const FEATURES = [
 {
@@ -94,9 +95,9 @@ function PhoneMockup({ src, alt }: { src: string; alt: string }) {
 	return (
 		<motion.div
 			aria-hidden
-			animate={shouldReduceMotion ? undefined : { y: [0, -8, 0] }}
-			transition={{ duration: 8.5, repeat: Infinity, ease: "easeInOut" }}
-			className="pointer-events-none w-full max-w-[280px] lg:max-w-[320px]"
+			animate={shouldReduceMotion ? undefined : { y: [0, -6, 0] }}
+			transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }}
+			className="pointer-events-none w-full max-w-[220px]"
 		>
 			<div className="rounded-[32px] border border-white/10 bg-slate-950/90 p-[9px] shadow-[0_26px_90px_-58px_rgba(0,0,0,0.95)]">
 				<div className="relative overflow-hidden rounded-[26px] bg-black shadow-[0_18px_60px_-32px_rgba(0,0,0,0.85)]">
@@ -108,7 +109,7 @@ function PhoneMockup({ src, alt }: { src: string; alt: string }) {
 							src={src}
 							alt={alt}
 							fill
-							sizes="(min-width: 1024px) 320px, 280px"
+							sizes="220px"
 							className="object-cover object-top"
 						/>
 					</div>
@@ -122,6 +123,10 @@ function PhoneMockup({ src, alt }: { src: string; alt: string }) {
 
 export default function FeatureShowcase() {
 	useReducedMotion();
+	const baseId = useId();
+	const [openTitle, setOpenTitle] = useState<
+		(typeof FEATURES)[number]["title"] | null
+	>(null);
 
 return (
 <section className="relative overflow-hidden" aria-label="Feature showcase">
@@ -131,52 +136,73 @@ return (
 <div className="absolute -top-28 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-gradient-to-r from-sky-400/12 via-violet-400/12 to-fuchsia-300/12 blur-3xl" />
 </div>
 
-<div className="mx-auto w-full max-w-6xl px-5 py-14 sm:px-6 sm:py-20">
-<div className="space-y-10 sm:space-y-14">
-{FEATURES.map((feature, index) => {
-const isReversed = index % 2 === 1;
+<div className="w-full px-5 py-14 sm:px-6 sm:py-20 lg:px-10 2xl:px-16">
+<div className="grid gap-6 md:grid-cols-3 md:gap-8">
+{FEATURES.map((feature) => {
 const details = FEATURE_DETAILS[feature.title];
 const more = LEARN_MORE[feature.title];
+const panelId = `${baseId}-${feature.title.replace(/\s+/g, "-").toLowerCase()}`;
 
 return (
 <motion.article
 key={feature.title}
-initial={{ opacity: 0, y: 18 }}
+initial={{ opacity: 0, y: 14 }}
 whileInView={{ opacity: 1, y: 0 }}
-viewport={{ once: true, amount: 0.3 }}
-transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-[0_26px_90px_-60px_rgba(0,0,0,0.90)] backdrop-blur"
+viewport={{ once: true, amount: 0.25 }}
+transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-[0_26px_90px_-60px_rgba(0,0,0,0.90)] backdrop-blur sm:p-7"
 >
 <div className="absolute inset-0 -z-10 bg-gradient-to-br from-sky-400/10 via-violet-400/10 to-fuchsia-300/10" />
 
-<div
-className={`grid gap-10 p-6 sm:p-8 lg:grid-cols-2 lg:items-center ${
-isReversed ? "lg:[&>*:first-child]:order-2" : ""
-}`}
->
-<div className="flex items-center justify-center">
+<div className="flex flex-col items-center text-center">
 <PhoneMockup src={feature.src} alt={feature.alt} />
-</div>
 
-<div className="text-center lg:text-left">
-<div className="mx-auto max-w-xl rounded-2xl border border-white/10 bg-white/[0.04] px-6 py-6 shadow-[0_14px_50px_-36px_rgba(0,0,0,0.85)] backdrop-blur lg:mx-0">
-<p className="text-xs font-medium tracking-wide text-white/60">
-{more.heading}
-</p>
-<h3 className="mt-2 text-balance text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+<h3 className="mt-6 text-balance text-lg font-semibold tracking-tight text-white sm:text-xl">
 {feature.title}
 </h3>
-
-<p className="mt-3 text-pretty text-sm leading-relaxed text-slate-200/85 sm:text-base">
+<p className="mt-2 text-pretty text-sm leading-relaxed text-slate-200/80">
 {feature.description} {details.more}
 </p>
 
-<p className="mt-3 text-pretty text-sm leading-relaxed text-slate-200/75 sm:text-base">
-{more.paragraphs[0]}
+<button
+type="button"
+aria-expanded={openTitle === feature.title}
+aria-controls={panelId}
+onClick={() =>
+setOpenTitle((current) => (current === feature.title ? null : feature.title))
+}
+className="mt-5 inline-flex items-center justify-center rounded-full border border-white/20 bg-white/[0.03] px-6 py-2 text-xs font-medium tracking-wide text-white/90 shadow-[0_10px_30px_-20px_rgba(0,0,0,0.90)] backdrop-blur transition hover:border-white/30 hover:bg-white/[0.06]"
+>
+{openTitle === feature.title ? "CLOSE" : "LEARN MORE"}
+</button>
+
+<AnimatePresence initial={false}>
+{openTitle === feature.title ? (
+<motion.div
+id={panelId}
+key="panel"
+initial={{ opacity: 0, height: 0, marginTop: 0 }}
+animate={{ opacity: 1, height: "auto", marginTop: 16 }}
+exit={{ opacity: 0, height: 0, marginTop: 0 }}
+transition={{ duration: 0.28, ease: "easeOut" }}
+className="w-full overflow-hidden"
+>
+<div className="rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-left shadow-[0_14px_50px_-40px_rgba(0,0,0,0.85)] backdrop-blur">
+<p className="text-sm font-semibold tracking-tight text-white/90">
+{more.heading}
 </p>
 
-<ul className="mt-5 space-y-2 text-left text-sm text-slate-200/75">
-{more.bullets.slice(0, 3).map((item) => (
+{more.paragraphs.map((p) => (
+<p
+key={p}
+className="mt-2 text-sm leading-relaxed text-slate-200/80"
+>
+{p}
+</p>
+))}
+
+<ul className="mt-3 space-y-2 text-sm text-slate-200/75">
+{more.bullets.map((item) => (
 <li key={item} className="flex gap-3">
 <span className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-white/35" />
 <span className="leading-relaxed">{item}</span>
@@ -184,7 +210,9 @@ isReversed ? "lg:[&>*:first-child]:order-2" : ""
 ))}
 </ul>
 </div>
-</div>
+</motion.div>
+) : null}
+</AnimatePresence>
 </div>
 </motion.article>
 );
