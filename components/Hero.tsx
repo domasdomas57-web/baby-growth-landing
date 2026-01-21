@@ -78,6 +78,23 @@ export default function Hero() {
 				<div className="absolute bottom-[-300px] right-[-240px] h-[680px] w-[680px] rounded-full bg-[#F6A6C1]/10 blur-3xl" />
 			</div>
 
+			<a
+				href={GOOGLE_PLAY_URL}
+				target="_blank"
+				rel="noreferrer"
+				aria-label="Open Baby Growth Tracker – AI on Google Play"
+				className="absolute left-5 top-5 z-10 inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] p-1.5 shadow-[0_18px_60px_-44px_rgba(0,0,0,0.95)] backdrop-blur transition hover:bg-white/[0.09] sm:left-6 sm:top-6 lg:left-10 lg:top-8"
+			>
+				<Image
+					src="/icon.png"
+					alt="Baby Growth Tracker – AI"
+					width={36}
+					height={36}
+					className="rounded-xl"
+					priority
+				/>
+			</a>
+
 			<div className="mx-auto max-w-6xl px-5 pb-14 pt-12 sm:px-6 sm:pb-20 sm:pt-16">
 				<div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
 					<div className="text-center lg:text-left">
