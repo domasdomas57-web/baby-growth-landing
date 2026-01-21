@@ -81,7 +81,7 @@ track.style.transform = "translateX(0px)";
 const maxOffset = Math.max(0, track.scrollWidth - viewport.clientWidth);
 if (maxOffset <= 0) return;
 
-const duration = Math.max(14, maxOffset / 45);
+const duration = Math.max(10, maxOffset / 70);
 controls = animate(0, -maxOffset, {
 duration,
 repeat: Infinity,
@@ -113,7 +113,7 @@ return (
 <div className="absolute -top-28 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-gradient-to-r from-sky-400/12 via-violet-400/12 to-fuchsia-300/12 blur-3xl" />
 </div>
 
-<div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 sm:py-20">
+<div className="w-full px-0 py-14 sm:py-20">
 <div className="relative">
 <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent" />
 <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-slate-950 via-slate-950/70 to-transparent" />
@@ -134,7 +134,7 @@ initial={{ opacity: 0, y: 18 }}
 whileInView={{ opacity: 1, y: 0 }}
 viewport={{ once: true, amount: 0.35 }}
 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-className="relative w-[92vw] max-w-[980px] overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-[0_26px_90px_-60px_rgba(0,0,0,0.90)] backdrop-blur sm:w-[84vw]"
+className="relative w-[92vw] overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-[0_26px_90px_-60px_rgba(0,0,0,0.90)] backdrop-blur sm:w-[84vw]"
 >
 <div className="absolute inset-0 -z-10 bg-gradient-to-br from-sky-400/10 via-violet-400/10 to-fuchsia-300/10" />
 
