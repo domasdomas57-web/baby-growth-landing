@@ -137,7 +137,7 @@ className="relative w-[92vw] overflow-hidden rounded-3xl border border-white/10 
 >
 <div className="absolute inset-0 -z-10 bg-gradient-to-br from-sky-400/10 via-violet-400/10 to-fuchsia-300/10" />
 
-<div className="grid gap-6 p-6 sm:p-10 lg:grid-cols-2 lg:items-center">
+<div className="grid gap-4 p-6 sm:gap-6 sm:p-10 lg:grid-cols-[auto,minmax(0,1fr)] lg:gap-4 lg:items-center">
 <div className="flex items-center justify-center lg:justify-start">
 <motion.div
 animate={shouldReduceMotion ? undefined : { y: [0, -8, 0] }}
