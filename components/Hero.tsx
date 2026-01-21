@@ -100,15 +100,25 @@ export default function Hero() {
 						<div className="mt-7 flex flex-col items-stretch gap-2 sm:items-center lg:items-start">
 							<a
 								href={GOOGLE_PLAY_URL}
-								className="relative isolate inline-flex w-full max-w-[200px] items-center justify-start gap-3 rounded-md bg-black px-3 py-3 pr-4 text-white ring-1 ring-white/20 shadow-[0_12px_30px_-12px_rgba(0,0,0,0.85)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7DD3FC]"
+								className="relative isolate inline-flex w-full max-w-[200px] rounded-md p-[1px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7DD3FC]"
 								aria-label="Download on Google Play"
 							>
-								<GooglePlayIcon className="h-7 w-7" />
-								<span className="flex flex-col items-start leading-none">
-									<span className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/70">
-										Get it on
+								<span
+									aria-hidden="true"
+									className="absolute -inset-2 -z-10 rounded-[10px] bg-gradient-to-r from-[#7DD3FC] via-[#C4B5FD] to-[#F6A6C1] opacity-35 blur-xl"
+								/>
+								<span
+									aria-hidden="true"
+									className="absolute inset-0 -z-10 rounded-md bg-gradient-to-r from-[#7DD3FC] via-[#C4B5FD] to-[#F6A6C1] opacity-70"
+								/>
+								<span className="inline-flex w-full items-center justify-start gap-3 rounded-[5px] bg-black px-3 py-3 pr-4 text-white ring-1 ring-white/15 shadow-[0_12px_30px_-12px_rgba(0,0,0,0.85)]">
+									<GooglePlayIcon className="h-7 w-7" />
+									<span className="flex flex-col items-start leading-none">
+										<span className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/70">
+											Get it on
+										</span>
+										<span className="text-base font-semibold">Google Play</span>
 									</span>
-									<span className="text-base font-semibold">Google Play</span>
 								</span>
 							</a>
 
