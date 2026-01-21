@@ -106,7 +106,7 @@ export default function Hero({ messages }: { messages: Messages["hero"] }) {
 
 						<h1
 							id="hero-title"
-							className="mt-5 text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl"
+							className="mt-5 text-balance text-3xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl"
 						>
 							Baby Growth Tracker – AI
 						</h1>
@@ -156,17 +156,17 @@ export default function Hero({ messages }: { messages: Messages["hero"] }) {
 
 					<div className="relative mx-auto w-full max-w-[360px] sm:max-w-[400px] lg:max-w-[520px]">
 						<div className="absolute -inset-6 -z-10 rounded-[32px] bg-gradient-to-br from-[#7DD3FC]/15 via-[#C4B5FD]/10 to-[#F6A6C1]/10 blur-2xl" />
-						<div className="relative mx-auto flex w-full flex-col items-center justify-center gap-6 sm:flex-row sm:items-end sm:gap-0">
+						<div className="no-scrollbar relative mx-auto flex w-full items-end gap-5 overflow-x-auto pb-2 sm:gap-0 sm:overflow-visible sm:pb-0">
 							<PhoneMock
 								src="/screenshots/app-stats.png"
 								alt="Baby Growth Tracker – AI app stats screen"
-								className="relative w-full max-w-[360px] sm:w-[48%]"
+								className="relative w-[78%] max-w-[320px] shrink-0 sm:w-[48%]"
 							/>
 							<PhoneMock
 								src="/screenshots/app-home.png"
 								alt="Baby Growth Tracker – AI app home screen"
 								priority
-								className="relative z-10 w-full max-w-[360px] sm:w-[56%] sm:-ml-6 sm:scale-[1.04]"
+								className="relative z-10 w-[78%] max-w-[320px] shrink-0 sm:w-[56%] sm:-ml-6 sm:scale-[1.04]"
 							/>
 						</div>
 					</div>

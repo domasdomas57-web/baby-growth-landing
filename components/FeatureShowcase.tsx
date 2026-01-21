@@ -118,7 +118,7 @@ export default function FeatureShowcase({
 					</p>
 				</div>
 
-				<div className="grid gap-6 md:grid-cols-3 md:gap-8">
+				<div className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:grid md:snap-none md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0">
 					{messages.tabs.map((tab, idx) => {
 						const screenshot = SCREENSHOTS[idx] ?? SCREENSHOTS[0];
 						const more = LEARN_MORE[idx] ?? LEARN_MORE[0];
@@ -132,7 +132,7 @@ export default function FeatureShowcase({
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true, amount: 0.25 }}
 								transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-								className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-[0_26px_90px_-60px_rgba(0,0,0,0.90)] backdrop-blur sm:p-7"
+								className="relative w-[82%] shrink-0 snap-center overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-[0_26px_90px_-60px_rgba(0,0,0,0.90)] backdrop-blur sm:w-[64%] sm:p-7 md:w-auto md:shrink md:snap-none"
 							>
 								<div className="absolute inset-0 -z-10 bg-gradient-to-br from-sky-400/10 via-violet-400/10 to-fuchsia-300/10" />
 
