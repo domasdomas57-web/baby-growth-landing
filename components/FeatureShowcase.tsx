@@ -123,8 +123,7 @@ return (
 ref={trackRef}
 className="flex w-max items-stretch gap-6 py-2 will-change-transform sm:gap-8"
 >
-{FEATURES.map((feature, index) => {
-const isReversed = index % 2 === 1;
+{FEATURES.map((feature) => {
 const details = FEATURE_DETAILS[feature.title];
 
 return (
@@ -138,16 +137,8 @@ className="relative w-[92vw] overflow-hidden rounded-3xl border border-white/10 
 >
 <div className="absolute inset-0 -z-10 bg-gradient-to-br from-sky-400/10 via-violet-400/10 to-fuchsia-300/10" />
 
-<div
-className={`grid gap-8 p-6 sm:p-10 lg:grid-cols-2 lg:items-center ${
-isReversed ? "lg:[&>*:first-child]:order-2" : ""
-}`}
->
-<div
-className={`flex items-center justify-center ${
-isReversed ? "lg:justify-end" : "lg:justify-start"
-}`}
->
+<div className="grid gap-6 p-6 sm:p-10 lg:grid-cols-2 lg:items-center">
+<div className="flex items-center justify-center lg:justify-start">
 <motion.div
 animate={shouldReduceMotion ? undefined : { y: [0, -8, 0] }}
 transition={{
