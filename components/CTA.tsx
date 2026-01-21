@@ -1,6 +1,13 @@
 const GOOGLE_PLAY_URL =
 	"https://play.google.com/store/apps/details?id=com.domce23.babygrowthtracker&hl=en";
 
+type CTAProps = {
+	title?: string;
+	description?: string;
+	note?: string;
+	className?: string;
+};
+
 function GooglePlayIcon() {
 	return (
 		<svg
@@ -34,8 +41,22 @@ function GooglePlayIcon() {
 }
 
 export default function CTA() {
+	return <CTASection />;
+}
+
+export function CTASection({
+	title = "Ready for calmer days?",
+	description =
+		"Download Baby Growth Tracker – AI to track sleep, feeding, and growth with AI insights and gentle warnings.",
+	note = "Fast setup • Multiple caregivers • Privacy-first",
+	className,
+}: CTAProps) {
 	return (
-		<section className="mx-auto max-w-6xl px-5 pb-16 sm:px-6 sm:pb-24">
+		<section
+			className={(
+				className ?? "mx-auto max-w-6xl px-5 pb-16 sm:px-6 sm:pb-24"
+				).trim()}
+		>
 			<div className="relative overflow-hidden rounded-3xl border border-black/10 bg-black px-6 py-10 text-white shadow-sm dark:border-white/10 sm:px-10 sm:py-14">
 				<div className="absolute inset-0 -z-10">
 					<div className="absolute -top-16 left-1/2 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-gradient-to-r from-sky-500/25 via-violet-500/25 to-emerald-500/25 blur-3xl" />
@@ -44,10 +65,10 @@ export default function CTA() {
 
 				<div className="mx-auto max-w-2xl text-center">
 					<h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
-						Ready for calmer days?
+						{title}
 					</h2>
 					<p className="mt-3 text-pretty text-sm leading-relaxed text-white/75 sm:text-base">
-						Download Baby Growth Tracker – AI to track sleep, feeding, and growth with AI insights and gentle warnings.
+						{description}
 					</p>
 
 					<div className="mt-7 flex flex-col items-center gap-3">
@@ -62,7 +83,7 @@ export default function CTA() {
 								<span className="text-base">Google Play</span>
 							</span>
 						</a>
-						<p className="text-xs text-white/60">Fast setup • Multiple caregivers • Privacy-first</p>
+						<p className="text-xs text-white/60">{note}</p>
 					</div>
 				</div>
 			</div>
