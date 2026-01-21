@@ -121,7 +121,7 @@ return (
 <div ref={viewportRef} className="overflow-hidden">
 <div
 ref={trackRef}
-className="flex w-max items-stretch gap-6 py-2 will-change-transform sm:gap-8"
+className="flex w-max items-stretch gap-5 py-2 will-change-transform sm:gap-6"
 >
 {FEATURES.map((feature) => {
 const details = FEATURE_DETAILS[feature.title];
@@ -133,12 +133,12 @@ initial={{ opacity: 0, y: 18 }}
 whileInView={{ opacity: 1, y: 0 }}
 viewport={{ once: true, amount: 0.35 }}
 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-className="relative w-[92vw] overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-[0_26px_90px_-60px_rgba(0,0,0,0.90)] backdrop-blur sm:w-[84vw]"
+className="relative w-[94vw] overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-[0_26px_90px_-60px_rgba(0,0,0,0.90)] backdrop-blur sm:w-[760px] md:w-[860px] lg:w-[920px]"
 >
 <div className="absolute inset-0 -z-10 bg-gradient-to-br from-sky-400/10 via-violet-400/10 to-fuchsia-300/10" />
 
-<div className="grid gap-4 p-5 sm:gap-5 sm:p-7 md:grid-cols-[auto,minmax(0,1fr)] md:items-center md:gap-5 lg:gap-6">
-<div className="flex items-center justify-center lg:justify-start">
+<div className="grid gap-4 p-5 sm:grid-cols-[auto,minmax(0,1fr)] sm:items-center sm:gap-5 sm:p-7 lg:gap-6">
+<div className="flex items-center justify-center sm:justify-start">
 <motion.div
 animate={shouldReduceMotion ? undefined : { y: [0, -8, 0] }}
 transition={{
@@ -169,8 +169,8 @@ className="object-cover object-top"
 </motion.div>
 </div>
 
-<div className="text-center lg:text-left">
-<div className="mx-auto max-w-2xl rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-5 shadow-[0_14px_50px_-36px_rgba(0,0,0,0.85)] backdrop-blur sm:px-6 sm:py-6 lg:mx-0">
+<div className="text-center sm:text-left">
+<div className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-5 shadow-[0_14px_50px_-36px_rgba(0,0,0,0.85)] backdrop-blur sm:px-6 sm:py-6">
 <h3 className="text-balance text-xl font-semibold tracking-tight text-white sm:text-2xl">
 {feature.title}
 </h3>
