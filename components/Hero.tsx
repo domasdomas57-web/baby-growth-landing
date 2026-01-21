@@ -100,12 +100,17 @@ export default function Hero() {
 						<div className="mt-7 flex flex-col items-stretch gap-2 sm:items-center lg:items-start">
 							<a
 								href={GOOGLE_PLAY_URL}
-								className="relative isolate inline-flex w-full max-w-[190px] rounded-md p-[1px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7DD3FC]"
+								className="group relative isolate inline-flex w-full max-w-[190px] rounded-md p-[1px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7DD3FC]"
 								aria-label="Download on Google Play"
 							>
+								{/* Moving border + glow */}
 								<span
 									aria-hidden="true"
-									className="absolute inset-0 -z-10 rounded-md bg-[conic-gradient(from_0deg,#7DD3FC,#C4B5FD,#F6A6C1,#7DD3FC)] opacity-70 blur-[1.5px] animate-spin [animation-duration:10s]"
+									className="absolute -inset-2 -z-10 rounded-[10px] bg-[conic-gradient(from_0deg,#7DD3FC,#C4B5FD,#F6A6C1,#7DD3FC)] opacity-55 blur-lg motion-reduce:animate-none motion-reduce:opacity-40 animate-spin [animation-duration:14s]"
+								/>
+								<span
+									aria-hidden="true"
+									className="absolute inset-0 -z-10 rounded-md bg-[conic-gradient(from_0deg,#7DD3FC,#C4B5FD,#F6A6C1,#7DD3FC)] opacity-80 motion-reduce:animate-none animate-spin [animation-duration:14s]"
 								/>
 								<span className="relative inline-flex w-full items-center justify-start gap-3 rounded-[5px] bg-black px-3 py-2.5 pr-4 text-white ring-1 ring-white/15 shadow-[0_12px_30px_-18px_rgba(0,0,0,0.90)]">
 									<GooglePlayIcon className="h-7 w-7" />
