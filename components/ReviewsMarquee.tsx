@@ -9,6 +9,38 @@ type Review = {
   name: string;
 };
 
+const GOOGLE_PLAY_URL =
+  "https://play.google.com/store/apps/details?id=com.domce23.babygrowthtracker&hl=en";
+
+function GooglePlayIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+      className={className}
+    >
+      <path
+        d="M3.7 2.7c-.5.5-.7 1.2-.7 2v14.6c0 .8.2 1.5.7 2L13 12 3.7 2.7Z"
+        fill="#34A853"
+      />
+      <path
+        d="M14.2 10.8 5 2.1c.5-.1 1.1 0 1.8.4l11.2 6.4-3.8 1.9Z"
+        fill="#4285F4"
+      />
+      <path
+        d="M14.2 13.2 18 15.1 6.8 21.5c-.7.4-1.3.5-1.8.4l9.2-8.7Z"
+        fill="#FBBC05"
+      />
+      <path
+        d="M19.6 10.1c1 .6 1.4 1.2 1.4 1.9s-.4 1.3-1.4 1.9l-1.6.9-4.1-2.1 4.1-2.1 1.6.9Z"
+        fill="#EA4335"
+      />
+    </svg>
+  );
+}
+
 function StarIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -39,7 +71,18 @@ function ReviewCard({ review }: { review: Review }) {
       <p className="mt-3 text-sm leading-relaxed text-slate-200/80">
         {review.text}
       </p>
-      <p className="mt-4 text-sm font-medium text-white/85">{review.name}</p>
+      <div className="mt-4 flex items-center justify-between gap-4">
+        <p className="text-sm font-medium text-white/85">{review.name}</p>
+        <a
+          href={GOOGLE_PLAY_URL}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="View on Google Play"
+          className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.02] p-1.5 opacity-90 shadow-[0_10px_30px_-24px_rgba(0,0,0,0.90)] backdrop-blur transition hover:opacity-100"
+        >
+          <GooglePlayIcon className="h-4 w-4" />
+        </a>
+      </div>
     </article>
   );
 }
@@ -124,7 +167,7 @@ export default function ReviewsMarquee() {
         <div className="absolute -top-24 left-1/2 h-[320px] w-[860px] -translate-x-1/2 rounded-full bg-gradient-to-r from-sky-400/12 via-violet-400/12 to-fuchsia-300/12 blur-3xl" />
       </div>
 
-      <div className="mx-auto w-full max-w-6xl px-5 py-12 sm:px-6 sm:py-16">
+      <div className="w-full px-5 py-12 sm:px-6 sm:py-16 lg:px-10 2xl:px-16">
         <div className="mb-8 text-center">
           <h2 className="text-balance text-2xl font-semibold tracking-tight text-white sm:text-3xl">
             Loved by parents
@@ -161,10 +204,6 @@ export default function ReviewsMarquee() {
               </div>
             </motion.div>
           </div>
-
-          <p className="mt-4 text-center text-xs text-slate-200/50">
-            Hover to pause
-          </p>
         </div>
       </div>
     </section>
