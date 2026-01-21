@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Baby Growth Tracker – AI",
   description: "Track sleep, feeding & growth with AI insights",
+  icons: {
+    icon: [{ url: "/icon.png", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({
