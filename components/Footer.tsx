@@ -30,20 +30,15 @@ export default function Footer() {
             </a>
           </div>
 
-          <div className="grid gap-2 text-sm text-slate-200/70 sm:justify-self-end sm:text-right">
-            <a href="#features" className="transition hover:text-white">
-              Features
+          <p className="text-sm text-slate-200/70 sm:justify-self-end sm:text-right">
+            Have a question? Contact us -{" "}
+            <a
+              href="mailto:infobysoriva@gmail.com"
+              className="text-slate-200/75 underline decoration-white/20 underline-offset-4 transition hover:text-white"
+            >
+              infobysoriva@gmail.com
             </a>
-            <a href="#" className="transition hover:text-white">
-              Privacy
-            </a>
-            <a href="#" className="transition hover:text-white">
-              Terms
-            </a>
-            <a href="mailto:support@babygrowthtracker-ai.com" className="transition hover:text-white">
-              Contact
-            </a>
-          </div>
+          </p>
         </div>
 
         <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-slate-200/55 sm:flex-row sm:items-center sm:justify-between">

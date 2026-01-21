@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 function FeatureIcon({ children }: { children: ReactNode }) {
 	return (
-		<div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-black/10 bg-white/70 text-black/80 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5 dark:text-white/80">
+		<div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/80 shadow-sm backdrop-blur">
 			{children}
 		</div>
 	);
@@ -190,13 +190,13 @@ const FEATURES: Array<{
 
 export default function Features() {
 	return (
-		<section className="mx-auto max-w-6xl px-5 py-12 sm:px-6 sm:py-16">
-			<div className="rounded-3xl border border-black/10 bg-white/50 p-6 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5 sm:p-10">
+		<section className="mx-auto max-w-6xl px-5 py-12 sm:px-6 sm:py-16" id="features">
+			<div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-[0_22px_70px_-52px_rgba(0,0,0,0.95)] backdrop-blur sm:p-10">
 				<div className="mx-auto max-w-2xl text-center">
-					<h2 className="text-balance text-2xl font-semibold tracking-tight text-black sm:text-3xl dark:text-white">
+					<h2 className="text-balance text-2xl font-semibold tracking-tight text-white sm:text-3xl">
 						Everything you need for baby tracking
 					</h2>
-					<p className="mt-3 text-pretty text-sm leading-relaxed text-black/70 sm:text-base dark:text-white/70">
+					<p className="mt-3 text-pretty text-sm leading-relaxed text-slate-200/70 sm:text-base">
 						Sleep, feeding, growth, and caregiver collaboration—wrapped in a calm, trustworthy experience.
 					</p>
 				</div>
@@ -205,15 +205,15 @@ export default function Features() {
 					{FEATURES.map((feature) => (
 						<div
 							key={feature.title}
-							className="rounded-2xl border border-black/10 bg-white/70 p-5 backdrop-blur dark:border-white/10 dark:bg-white/5"
+							className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur"
 						>
 							<div className="flex items-start gap-4">
 								<FeatureIcon>{feature.icon}</FeatureIcon>
 								<div>
-									<h3 className="text-sm font-semibold text-black dark:text-white">
+									<h3 className="text-sm font-semibold text-white">
 										{feature.title}
 									</h3>
-									<p className="mt-1 text-sm text-black/70 dark:text-white/70">
+									<p className="mt-1 text-sm text-slate-200/70">
 										{feature.description}
 									</p>
 								</div>

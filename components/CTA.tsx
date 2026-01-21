@@ -57,7 +57,7 @@ export function CTASection({
 				className ?? "mx-auto max-w-6xl px-5 pb-16 sm:px-6 sm:pb-24"
 				).trim()}
 		>
-			<div className="relative overflow-hidden rounded-3xl border border-black/10 bg-black px-6 py-10 text-white shadow-sm dark:border-white/10 sm:px-10 sm:py-14">
+			<div className="relative overflow-hidden rounded-3xl border border-white/10 bg-black px-6 py-10 text-white shadow-sm sm:px-10 sm:py-14">
 				<div className="absolute inset-0 -z-10">
 					<div className="absolute -top-16 left-1/2 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-gradient-to-r from-sky-500/25 via-violet-500/25 to-emerald-500/25 blur-3xl" />
 					<div className="absolute bottom-[-260px] right-[-220px] h-[520px] w-[520px] rounded-full bg-white/5 blur-3xl" />
