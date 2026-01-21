@@ -32,36 +32,50 @@ const FEATURE_DETAILS: Record<
 { more: string; bullets?: readonly string[] }
 > = {
 "Sleep Predictions": {
-more:
-"Know what’s coming next and plan naps with more confidence.",
-bullets: [
-"See the next nap window at a glance",
-"Spot patterns across days, not just today",
-"Reduce overtired meltdowns with better timing",
-],
+more: "Know what’s coming next and plan naps with more confidence.",
 },
 "Growth Tracking": {
-more:
-"A clean record of growth you can review and share fast.",
-bullets: [
-"Clean charts that are easy to read",
-"Track multiple measurements together",
-"Perfect for quick pediatrician updates",
-],
+more: "A clean record of growth you can review and share fast.",
 },
 "AI Insights": {
-more:
-"Turn daily logs into clear patterns and next steps.",
-bullets: [
-"Highlights patterns in sleep and feeding",
-"Find routine shifts sooner",
-"Actionable insights, not noise",
-],
+more: "Turn daily logs into clear patterns and next steps.",
 },
 };
 
+function PhoneMockup({ src, alt }: { src: string; alt: string }) {
+	const shouldReduceMotion = useReducedMotion();
+
+	return (
+		<motion.div
+			aria-hidden
+			animate={shouldReduceMotion ? undefined : { y: [0, -6, 0] }}
+			transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }}
+			className="pointer-events-none w-full max-w-[220px]"
+		>
+			<div className="rounded-[32px] border border-white/10 bg-slate-950/90 p-[9px] shadow-[0_26px_90px_-58px_rgba(0,0,0,0.95)]">
+				<div className="relative overflow-hidden rounded-[26px] bg-black shadow-[0_18px_60px_-32px_rgba(0,0,0,0.85)]">
+					<div className="absolute left-1/2 top-0 z-10 h-6 w-[116px] -translate-x-1/2 rounded-b-[18px] bg-slate-950" />
+					<div className="absolute left-1/2 top-[7px] z-10 h-[4px] w-10 -translate-x-1/2 rounded-full bg-white/15" />
+
+					<div className="relative aspect-[9/19] w-full">
+						<Image
+							src={src}
+							alt={alt}
+							fill
+							sizes="220px"
+							className="object-cover object-top"
+						/>
+					</div>
+
+					<div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12),inset_0_-18px_42px_rgba(0,0,0,0.34)]" />
+				</div>
+			</div>
+		</motion.div>
+	);
+}
+
 export default function FeatureShowcase() {
-const shouldReduceMotion = useReducedMotion();
+useReducedMotion();
 
 return (
 <section className="relative overflow-hidden" aria-label="Feature showcase">
@@ -72,68 +86,37 @@ return (
 </div>
 
 <div className="mx-auto w-full max-w-6xl px-5 py-14 sm:px-6 sm:py-20">
-<div className="space-y-6 sm:space-y-8">
+<div className="grid gap-8 md:grid-cols-3">
 {FEATURES.map((feature) => {
 const details = FEATURE_DETAILS[feature.title];
 
 return (
 <motion.article
 key={feature.title}
-initial={{ opacity: 0, y: 16 }}
+initial={{ opacity: 0, y: 14 }}
 whileInView={{ opacity: 1, y: 0 }}
-viewport={{ once: true, amount: 0.3 }}
+viewport={{ once: true, amount: 0.25 }}
 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-[0_26px_90px_-60px_rgba(0,0,0,0.90)] backdrop-blur"
+className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-[0_26px_90px_-60px_rgba(0,0,0,0.90)] backdrop-blur sm:p-7"
 >
 <div className="absolute inset-0 -z-10 bg-gradient-to-br from-sky-400/10 via-violet-400/10 to-fuchsia-300/10" />
 
-<div className="grid gap-5 p-5 sm:grid-cols-[240px,minmax(0,1fr)] sm:items-center sm:gap-7 sm:p-7">
-<div className="flex items-center justify-center sm:justify-start">
-<motion.div
-animate={shouldReduceMotion ? undefined : { y: [0, -6, 0] }}
-transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }}
-className="pointer-events-none w-full max-w-[220px] sm:max-w-[240px]"
->
-<div className="rounded-[32px] border border-white/10 bg-slate-950/90 p-[9px] shadow-[0_26px_90px_-58px_rgba(0,0,0,0.95)]">
-<div className="relative overflow-hidden rounded-[26px] bg-black shadow-[0_18px_60px_-32px_rgba(0,0,0,0.85)]">
-<div className="absolute left-1/2 top-0 z-10 h-6 w-[116px] -translate-x-1/2 rounded-b-[18px] bg-slate-950" />
-<div className="absolute left-1/2 top-[7px] z-10 h-[4px] w-10 -translate-x-1/2 rounded-full bg-white/15" />
+<div className="flex flex-col items-center text-center">
+<PhoneMockup src={feature.src} alt={feature.alt} />
 
-<div className="relative aspect-[9/19] w-full">
-<Image
-src={feature.src}
-alt={feature.alt}
-fill
-sizes="240px"
-className="object-cover object-top"
-/>
-</div>
-
-<div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12),inset_0_-18px_42px_rgba(0,0,0,0.34)]" />
-</div>
-</div>
-</motion.div>
-</div>
-
-<div className="text-center sm:text-left">
-<h3 className="text-balance text-xl font-semibold tracking-tight text-white sm:text-2xl">
+<h3 className="mt-6 text-balance text-lg font-semibold tracking-tight text-white sm:text-xl">
 {feature.title}
 </h3>
 <p className="mt-2 text-pretty text-sm leading-relaxed text-slate-200/80">
 {feature.description} {details.more}
 </p>
 
-{details.bullets ? (
-<ul className="mt-4 space-y-2 text-left text-sm text-slate-200/75">
-{details.bullets.map((item) => (
-<li key={item} className="flex gap-3">
-<span className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-white/35" />
-<span className="leading-relaxed">{item}</span>
-</li>
-))}
-</ul>
-) : null}
-</div>
+<a
+href="#features"
+className="mt-5 inline-flex items-center justify-center rounded-full border border-white/20 bg-white/[0.03] px-6 py-2 text-xs font-medium tracking-wide text-white/90 shadow-[0_10px_30px_-20px_rgba(0,0,0,0.90)] backdrop-blur transition hover:border-white/30 hover:bg-white/[0.06]"
+>
+LEARN MORE
+</a>
 </div>
 </motion.article>
 );
