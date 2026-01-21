@@ -137,7 +137,7 @@ className="relative w-[92vw] overflow-hidden rounded-3xl border border-white/10 
 >
 <div className="absolute inset-0 -z-10 bg-gradient-to-br from-sky-400/10 via-violet-400/10 to-fuchsia-300/10" />
 
-<div className="grid gap-4 p-6 sm:gap-6 sm:p-10 lg:grid-cols-[auto,minmax(0,1fr)] lg:gap-4 lg:items-center">
+<div className="grid gap-4 p-5 sm:gap-5 sm:p-7 md:grid-cols-[auto,minmax(0,1fr)] md:items-center md:gap-5 lg:gap-6">
 <div className="flex items-center justify-center lg:justify-start">
 <motion.div
 animate={shouldReduceMotion ? undefined : { y: [0, -8, 0] }}
@@ -146,7 +146,7 @@ duration: 8.5,
 repeat: Infinity,
 ease: "easeInOut",
 }}
-className="pointer-events-none w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[320px]"
+className="pointer-events-none w-full max-w-[220px] sm:max-w-[240px] lg:max-w-[260px]"
 >
 <div className="rounded-[34px] border border-white/10 bg-slate-950/90 p-[10px] shadow-[0_26px_90px_-58px_rgba(0,0,0,0.95)]">
 <div className="relative overflow-hidden rounded-[28px] bg-black shadow-[0_18px_60px_-32px_rgba(0,0,0,0.85)]">
@@ -158,7 +158,7 @@ className="pointer-events-none w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[3
 src={feature.src}
 alt={feature.alt}
 fill
-sizes="(min-width: 1024px) 320px, 280px"
+sizes="(min-width: 1024px) 260px, 220px"
 className="object-cover object-top"
 />
 </div>
@@ -170,16 +170,16 @@ className="object-cover object-top"
 </div>
 
 <div className="text-center lg:text-left">
-<div className="mx-auto max-w-2xl rounded-2xl border border-white/10 bg-white/[0.04] px-6 py-6 shadow-[0_14px_50px_-36px_rgba(0,0,0,0.85)] backdrop-blur sm:px-7 sm:py-7 lg:mx-0">
-<h3 className="text-balance text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+<div className="mx-auto max-w-2xl rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-5 shadow-[0_14px_50px_-36px_rgba(0,0,0,0.85)] backdrop-blur sm:px-6 sm:py-6 lg:mx-0">
+<h3 className="text-balance text-xl font-semibold tracking-tight text-white sm:text-2xl">
 {feature.title}
 </h3>
-<p className="mt-3 text-pretty text-sm leading-relaxed text-slate-200/80 sm:text-base">
+<p className="mt-2 text-pretty text-xs leading-relaxed text-slate-200/80 sm:mt-3 sm:text-sm">
 {feature.description} {details.more}
 </p>
 
 {details.bullets ? (
-<ul className="mt-5 space-y-2 text-left text-sm text-slate-200/75">
+<ul className="mt-4 space-y-1.5 text-left text-xs text-slate-200/75 sm:mt-5 sm:space-y-2 sm:text-sm">
 {details.bullets.map((item) => (
 <li key={item} className="flex gap-3">
 <span className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-white/35" />
