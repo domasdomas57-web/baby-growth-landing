@@ -100,15 +100,21 @@ export default function Hero() {
 						<div className="mt-7 flex flex-col items-stretch gap-2 sm:items-center lg:items-start">
 							<a
 								href={GOOGLE_PLAY_URL}
-								className="relative isolate inline-flex w-full max-w-[200px] items-center justify-start gap-3 rounded-md bg-black pl-3 pr-4 py-3 text-white ring-1 ring-white/20 shadow-[0_12px_30px_-12px_rgba(0,0,0,0.85),0_0_0_1px_rgba(255,255,255,0.06),0_0_24px_rgba(125,211,252,0.22),0_0_32px_rgba(196,181,253,0.18),0_0_36px_rgba(246,166,193,0.16)] before:absolute before:inset-0 before:-z-10 before:rounded-md before:bg-gradient-to-r before:from-[#7DD3FC]/70 before:via-[#C4B5FD]/65 before:to-[#F6A6C1]/70 before:blur-lg before:content-[''] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7DD3FC]"
+								className="relative isolate inline-flex w-full max-w-[190px] rounded-md p-[1px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7DD3FC]"
 								aria-label="Download on Google Play"
 							>
-								<GooglePlayIcon className="h-7 w-7" />
-								<span className="flex flex-col items-start leading-none">
-									<span className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/70">
-										Get it on
+								<span
+									aria-hidden="true"
+									className="absolute inset-0 -z-10 rounded-md bg-[conic-gradient(from_0deg,#7DD3FC,#C4B5FD,#F6A6C1,#7DD3FC)] opacity-70 blur-[1.5px] animate-spin [animation-duration:10s]"
+								/>
+								<span className="relative inline-flex w-full items-center justify-start gap-3 rounded-[5px] bg-black px-3 py-2.5 pr-4 text-white ring-1 ring-white/15 shadow-[0_12px_30px_-18px_rgba(0,0,0,0.90)]">
+									<GooglePlayIcon className="h-7 w-7" />
+									<span className="flex flex-col items-start leading-none">
+										<span className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/70">
+											Get it on
+										</span>
+										<span className="text-base font-semibold">Google Play</span>
 									</span>
-									<span className="text-base font-semibold">Google Play</span>
 								</span>
 							</a>
 
