@@ -3,13 +3,18 @@ import type { Messages } from "@/i18n/messages";
 const GOOGLE_PLAY_URL =
 	"https://play.google.com/store/apps/details?id=com.domce23.babygrowthtracker&hl=en";
 
+const APP_STORE_URL =
+	"https://apps.apple.com/lt/app/baby-tracker-ai-soriva/id6759395777";
+
 type CTAProps = {
 	title?: string;
 	description?: string;
 	note?: string;
 	googlePlayAria?: string;
+	appStoreAria?: string;
 	getItOn?: string;
 	googlePlayLabel?: string;
+	appStoreLabel?: string;
 	className?: string;
 };
 
@@ -45,6 +50,29 @@ function GooglePlayIcon() {
 	);
 }
 
+function AppStoreIcon() {
+	return (
+		<svg
+			viewBox="0 0 24 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
+			className="h-5 w-5"
+		>
+			<path
+				d="M16.9 13.3c0-2 1.6-3 1.7-3.1-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.8-3.1.8-.6 0-1.6-.8-2.7-.8-1.4 0-2.6.8-3.3 2-1.4 2.4-.4 6 1 7.9.7.9 1.5 1.9 2.6 1.9 1 0 1.4-.7 2.7-.7s1.6.7 2.7.7c1.1 0 1.9-1 2.6-1.9.8-1.2 1.1-2.3 1.1-2.4-.1 0-2.3-.9-2.3-3.7Z"
+				fill="currentColor"
+				opacity="0.9"
+			/>
+			<path
+				d="M14.7 5.4c.6-.7 1-1.7.9-2.7-.9.1-2 .6-2.6 1.4-.6.7-1.1 1.7-.9 2.7 1 0 2-.6 2.6-1.4Z"
+				fill="currentColor"
+				opacity="0.9"
+			/>
+		</svg>
+	);
+}
+
 export default function CTA({ messages }: { messages: Messages["cta"] }) {
 	return (
 		<CTASection
@@ -52,8 +80,10 @@ export default function CTA({ messages }: { messages: Messages["cta"] }) {
 			description={messages.description}
 			note={messages.note}
 			googlePlayAria={messages.downloadAria}
+			appStoreAria={messages.appStoreAria}
 			getItOn={messages.getItOn}
 			googlePlayLabel={messages.googlePlay}
+			appStoreLabel={messages.appStore}
 		/>
 	);
 }
@@ -64,8 +94,10 @@ export function CTASection({
 		"Download Baby Growth Tracker – AI to track sleep, feeding, and growth with AI insights and gentle warnings.",
 	note = "Fast setup • Multiple caregivers • Privacy-first",
 	googlePlayAria = "Download on Google Play",
+	appStoreAria = "Download on the App Store",
 	getItOn = "Get it on",
 	googlePlayLabel = "Google Play",
+	appStoreLabel = "App Store",
 	className,
 }: CTAProps) {
 	return (
@@ -98,6 +130,17 @@ export function CTASection({
 							<span className="flex flex-col items-start leading-none">
 								<span className="text-[11px] font-medium opacity-80">{getItOn}</span>
 								<span className="text-base">{googlePlayLabel}</span>
+							</span>
+						</a>
+						<a
+							href={APP_STORE_URL}
+							className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl bg-white px-6 py-4 text-base font-semibold text-black shadow-sm ring-1 ring-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+							aria-label={appStoreAria}
+						>
+							<AppStoreIcon />
+							<span className="flex flex-col items-start leading-none">
+								<span className="text-[11px] font-medium opacity-80">{getItOn}</span>
+								<span className="text-base">{appStoreLabel}</span>
 							</span>
 						</a>
 						<p className="text-xs text-white/60">{note}</p>

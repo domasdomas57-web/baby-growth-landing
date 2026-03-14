@@ -5,6 +5,9 @@ import type { Messages } from "@/i18n/messages";
 const GOOGLE_PLAY_URL =
 	"https://play.google.com/store/apps/details?id=com.domce23.babygrowthtracker&hl=en";
 
+const APP_STORE_URL =
+	"https://apps.apple.com/lt/app/baby-tracker-ai-soriva/id6759395777";
+
 function GooglePlayIcon(props: SVGProps<SVGSVGElement>) {
 	return (
 		<svg
@@ -34,37 +37,24 @@ function GooglePlayIcon(props: SVGProps<SVGSVGElement>) {
 	);
 }
 
-type PhoneMockProps = {
-	src: string;
-	alt: string;
-	priority?: boolean;
-	className?: string;
-};
-
-function PhoneMock({ src, alt, priority, className }: PhoneMockProps) {
+function AppStoreIcon(props: SVGProps<SVGSVGElement>) {
 	return (
-		<div className={`pointer-events-none ${className ?? ""}`.trim()}>
-			<div className="rounded-[36px] border border-white/10 bg-slate-950/95 p-[10px] shadow-[0_34px_110px_-52px_rgba(0,0,0,0.95)]">
-				<div className="relative overflow-hidden rounded-[28px] bg-black">
-					{/* Notch */}
-					<div className="absolute left-1/2 top-0 z-10 h-6 w-[120px] -translate-x-1/2 rounded-b-[18px] bg-slate-950 shadow-[0_1px_0_rgba(255,255,255,0.08)]" />
-					<div className="absolute left-1/2 top-[7px] z-10 h-[4px] w-10 -translate-x-1/2 rounded-full bg-white/15" />
-
-					<div className="relative aspect-[9/19] w-full">
-						<Image
-							src={src}
-							alt={alt}
-							fill
-							priority={priority}
-							sizes="(min-width: 1024px) 520px, 90vw"
-							className="object-cover object-top"
-						/>
-					</div>
-
-					<div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12),inset_0_-18px_42px_rgba(0,0,0,0.34)]" />
-				</div>
-			</div>
-		</div>
+		<svg
+			viewBox="0 0 24 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
+			{...props}
+		>
+			<path
+				d="M16.9 13.3c0-2 1.6-3 1.7-3.1-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.8-3.1.8-.6 0-1.6-.8-2.7-.8-1.4 0-2.6.8-3.3 2-1.4 2.4-.4 6 1 7.9.7.9 1.5 1.9 2.6 1.9 1 0 1.4-.7 2.7-.7s1.6.7 2.7.7c1.1 0 1.9-1 2.6-1.9.8-1.2 1.1-2.3 1.1-2.4-.1 0-2.3-.9-2.3-3.7Z"
+				fill="currentColor"
+			/>
+			<path
+				d="M14.7 5.4c.6-.7 1-1.7.9-2.7-.9.1-2 .6-2.6 1.4-.6.7-1.1 1.7-.9 2.7 1 0 2-.6 2.6-1.4Z"
+				fill="currentColor"
+			/>
+		</svg>
 	);
 }
 
@@ -116,7 +106,8 @@ export default function Hero({ messages }: { messages: Messages["hero"] }) {
 						</p>
 
 						<div className="mt-7 flex flex-col items-stretch gap-2 sm:items-center lg:items-start">
-							<a
+							<div className="flex w-full flex-wrap items-stretch justify-center gap-2 lg:justify-start">
+								<a
 								href={GOOGLE_PLAY_URL}
 								className="relative isolate inline-flex w-full max-w-[200px] rounded-md p-[1px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7DD3FC]"
 								aria-label={messages.googlePlayAria}
@@ -138,7 +129,32 @@ export default function Hero({ messages }: { messages: Messages["hero"] }) {
 										<span className="text-base font-semibold">{messages.googlePlay}</span>
 									</span>
 								</span>
-							</a>
+								</a>
+
+								<a
+								href={APP_STORE_URL}
+								className="relative isolate inline-flex w-full max-w-[200px] rounded-md p-[1px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7DD3FC]"
+								aria-label={messages.appStoreAria}
+							>
+								<span
+									aria-hidden="true"
+									className="absolute -inset-2 -z-10 rounded-[10px] bg-gradient-to-r from-[#7DD3FC] via-[#C4B5FD] to-[#F6A6C1] opacity-35 blur-xl"
+								/>
+								<span
+									aria-hidden="true"
+									className="absolute inset-0 -z-10 rounded-md bg-gradient-to-r from-[#7DD3FC] via-[#C4B5FD] to-[#F6A6C1] opacity-70"
+								/>
+								<span className="inline-flex w-full items-center justify-start gap-3 rounded-[5px] bg-black px-3 py-3 pr-4 text-white ring-1 ring-white/15 shadow-[0_12px_30px_-12px_rgba(0,0,0,0.85)]">
+									<AppStoreIcon className="h-7 w-7" />
+									<span className="flex flex-col items-start leading-none">
+										<span className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/70">
+											{messages.getItOn}
+										</span>
+										<span className="text-base font-semibold">{messages.appStore}</span>
+									</span>
+								</span>
+								</a>
+							</div>
 
 							<div className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-2.5 text-xs text-white/75 shadow-sm backdrop-blur sm:w-auto">
 								<div className="flex items-center gap-2">
@@ -156,18 +172,29 @@ export default function Hero({ messages }: { messages: Messages["hero"] }) {
 
 					<div className="relative mx-auto w-full max-w-[360px] sm:max-w-[400px] lg:max-w-[520px]">
 						<div className="absolute -inset-6 -z-10 rounded-[32px] bg-gradient-to-br from-[#7DD3FC]/15 via-[#C4B5FD]/10 to-[#F6A6C1]/10 blur-2xl" />
-						<div className="no-scrollbar relative mx-auto flex w-full items-end gap-5 overflow-x-auto pb-2 sm:gap-0 sm:overflow-visible sm:pb-0">
-							<PhoneMock
-								src="/screenshots/app-stats.png"
-								alt="Baby Growth Tracker – AI app stats screen"
-								className="relative w-[78%] max-w-[320px] shrink-0 sm:w-[48%]"
-							/>
-							<PhoneMock
-								src="/screenshots/app-home.png"
-								alt="Baby Growth Tracker – AI app home screen"
-								priority
-								className="relative z-10 w-[78%] max-w-[320px] shrink-0 sm:w-[56%] sm:-ml-6 sm:scale-[1.04]"
-							/>
+						<div className="grid items-end gap-5 sm:grid-cols-2">
+							<div className="overflow-hidden rounded-3xl border border-white/10 shadow-[0_24px_80px_-52px_rgba(0,0,0,0.95)]">
+								<Image
+									src="/screenshots/1.png"
+									alt="Baby Growth Tracker – AI screenshot 1"
+									width={1080}
+									height={1920}
+									priority
+									sizes="(min-width: 1024px) 260px, (min-width: 640px) 50vw, 90vw"
+									className="h-auto w-full"
+								/>
+							</div>
+
+							<div className="overflow-hidden rounded-3xl border border-white/10 shadow-[0_24px_80px_-52px_rgba(0,0,0,0.95)]">
+								<Image
+									src="/screenshots/2.png"
+									alt="Baby Growth Tracker – AI screenshot 2"
+									width={1080}
+									height={1920}
+									sizes="(min-width: 1024px) 260px, (min-width: 640px) 50vw, 90vw"
+									className="h-auto w-full"
+								/>
+							</div>
 						</div>
 					</div>
 				</div>

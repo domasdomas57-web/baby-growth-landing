@@ -16,6 +16,22 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Contact form email (SMTP)
+
+The footer contact form posts to `/api/contact` and sends an email to `infobysoriva@gmail.com`.
+
+Set these environment variables (e.g. in `.env.local` for local dev, and in your hosting provider for production):
+
+```bash
+SMTP_HOST=
+SMTP_PORT=
+SMTP_USER=
+SMTP_PASS=
+SMTP_FROM=
+# Optional (defaults to true if SMTP_PORT=465)
+SMTP_SECURE=true
+```
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

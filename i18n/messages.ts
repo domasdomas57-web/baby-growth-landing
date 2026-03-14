@@ -6,8 +6,10 @@ export type Messages = {
     badge: string;
     tagline: string;
     googlePlayAria: string;
+    appStoreAria: string;
     getItOn: string;
     googlePlay: string;
+    appStore: string;
     privacyTitle: string;
     privacySubtitle: string;
     noAdsNote: string;
@@ -28,13 +30,25 @@ export type Messages = {
     description: string;
     note: string;
     downloadAria: string;
+    appStoreAria: string;
     getItOn: string;
     googlePlay: string;
+    appStore: string;
   };
   footer: {
     brand: string;
     description: string;
     googlePlayCta: string;
+    appStoreCta: string;
+    formTitle: string;
+    formSubtitle: string;
+    yourEmailLabel: string;
+    subjectLabel: string;
+    messageLabel: string;
+    sendLabel: string;
+    sendingLabel: string;
+    sentMessage: string;
+    errorMessage: string;
     contactLinePrefix: string;
     email: string;
     emailAria: string;
@@ -56,8 +70,10 @@ const en: Messages = {
     badge: "AI-powered baby care insights",
     tagline: "Track sleep • feeding • growth with AI insights",
     googlePlayAria: "Download on Google Play",
+    appStoreAria: "Download on the App Store",
     getItOn: "Get it on",
     googlePlay: "Google Play",
+    appStore: "App Store",
     privacyTitle: "Private by design",
     privacySubtitle: "Sync across devices.",
     noAdsNote: "No ads in core tracking. Designed for one-handed use.",
@@ -106,14 +122,26 @@ const en: Messages = {
       "Download Baby Growth Tracker – AI to track sleep, feeding, and growth with AI insights and gentle warnings.",
     note: "Fast setup • Multiple caregivers • Privacy-first",
     downloadAria: "Download on Google Play",
+    appStoreAria: "Download on the App Store",
     getItOn: "Get it on",
     googlePlay: "Google Play",
+    appStore: "App Store",
   },
   footer: {
     brand: "Baby Growth Tracker – AI",
     description:
       "Track sleep, feeding, and growth with AI insights—built for calm, consistent routines.",
     googlePlayCta: "Get it on Google Play",
+    appStoreCta: "Download on the App Store",
+    formTitle: "Contact us",
+    formSubtitle: "Have any questions or suggestions? Leave us a message.",
+    yourEmailLabel: "Your email",
+    subjectLabel: "Subject",
+    messageLabel: "Message",
+    sendLabel: "Send",
+    sendingLabel: "Sending…",
+    sentMessage: "Sent. We’ll reply by email.",
+    errorMessage: "Could not send right now. Please try again later.",
     contactLinePrefix: "Have a question? Contact us -",
     email: "infobysoriva@gmail.com",
     emailAria: "Email support",
@@ -154,8 +182,10 @@ const lt: Messages = {
     badge: "AI įžvalgos kasdienei kūdikio priežiūrai",
     tagline: "Sekite miegą • maitinimą • augimą su AI įžvalgomis",
     googlePlayAria: "Atsisiųsti iš Google Play",
+    appStoreAria: "Atsisiųsti iš App Store",
     getItOn: "Gaukite",
     googlePlay: "Google Play",
+    appStore: "App Store",
     privacyTitle: "Privatumas pagal nutylėjimą",
     privacySubtitle: "Sinchronizacija tarp įrenginių.",
     noAdsNote: "Be reklamų pagrindiniame sekime. Patogu naudoti viena ranka.",
@@ -199,14 +229,26 @@ const lt: Messages = {
       "Atsisiųskite Baby Growth Tracker – AI ir sekite miegą, maitinimą bei augimą su AI įžvalgomis ir švelniais perspėjimais.",
     note: "Greitas startas • Keli globėjai • Privatumas",
     downloadAria: "Atsisiųsti iš Google Play",
+    appStoreAria: "Atsisiųsti iš App Store",
     getItOn: "Gaukite",
     googlePlay: "Google Play",
+    appStore: "App Store",
   },
   footer: {
     brand: "Baby Growth Tracker – AI",
     description:
       "Sekite miegą, maitinimą ir augimą su AI įžvalgomis — ramiai ir nuosekliai kasdien.",
     googlePlayCta: "Gauti Google Play",
+    appStoreCta: "Atsisiųsti iš App Store",
+    formTitle: "Susisiekite",
+    formSubtitle: "Turite klausimų ar pasiūlymų? Palikite žinutę.",
+    yourEmailLabel: "Jūsų el. paštas",
+    subjectLabel: "Tema",
+    messageLabel: "Žinutė",
+    sendLabel: "Siųsti",
+    sendingLabel: "Siunčiama…",
+    sentMessage: "Išsiųsta. Atsakysime el. paštu.",
+    errorMessage: "Nepavyko išsiųsti. Pabandykite vėliau.",
     contactLinePrefix: "Turite klausimų? Susisiekite -",
     email: "infobysoriva@gmail.com",
     emailAria: "Parašyti el. paštu",
