@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import type { SVGProps } from "react";
 import type { Messages } from "@/i18n/messages";
+import { trackEvent } from "@/lib/analytics";
 
 const GOOGLE_PLAY_URL =
 	"https://play.google.com/store/apps/details?id=com.domce23.babygrowthtracker&hl=en";
@@ -73,12 +76,13 @@ export default function Hero({ messages }: { messages: Messages["hero"] }) {
 				href={GOOGLE_PLAY_URL}
 				target="_blank"
 				rel="noreferrer"
-				aria-label="Open Baby Growth Tracker – AI on Google Play"
+				onClick={() => trackEvent("click_googleplay", { placement: "hero_icon" })}
+				aria-label={messages.googlePlayAria}
 				className="absolute left-5 top-5 z-10 inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] p-2 shadow-[0_18px_60px_-44px_rgba(0,0,0,0.95)] backdrop-blur transition hover:bg-white/[0.09] sm:left-6 sm:top-6 lg:left-10 lg:top-8"
 			>
 				<Image
 					src="/icon.png"
-					alt="Baby Growth Tracker – AI"
+					alt="baby tracker app sleep feeding newborn tracking"
 					width={56}
 					height={56}
 					className="rounded-2xl"
@@ -96,19 +100,20 @@ export default function Hero({ messages }: { messages: Messages["hero"] }) {
 
 						<h1
 							id="hero-title"
-							className="mt-5 text-balance text-3xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl"
+							className="mt-5 text-balance text-2xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl"
 						>
-							Baby Growth Tracker – AI
+							{messages.title}
 						</h1>
 
 						<p className="mt-4 text-pretty text-base leading-relaxed text-slate-200/80 sm:text-lg">
-							{messages.tagline}
+							{messages.subtitle}
 						</p>
 
 						<div className="mt-7 flex flex-col items-stretch gap-2 sm:items-center lg:items-start">
 							<div className="flex w-full flex-wrap items-stretch justify-center gap-2 lg:justify-start">
 								<a
 								href={GOOGLE_PLAY_URL}
+								onClick={() => trackEvent("click_googleplay", { placement: "hero_primary" })}
 								className="relative isolate inline-flex w-full max-w-[200px] rounded-md p-[1px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7DD3FC]"
 								aria-label={messages.googlePlayAria}
 							>
@@ -120,11 +125,11 @@ export default function Hero({ messages }: { messages: Messages["hero"] }) {
 									aria-hidden="true"
 									className="absolute inset-0 -z-10 rounded-md bg-gradient-to-r from-[#7DD3FC] via-[#C4B5FD] to-[#F6A6C1] opacity-70"
 								/>
-								<span className="inline-flex w-full items-center justify-start gap-3 rounded-[5px] bg-black px-3 py-3 pr-4 text-white ring-1 ring-white/15 shadow-[0_12px_30px_-12px_rgba(0,0,0,0.85)]">
+								<span className="inline-flex min-h-[58px] w-full items-center justify-start gap-3 rounded-[5px] bg-black px-3 py-3.5 pr-4 text-white ring-1 ring-white/15 shadow-[0_12px_30px_-12px_rgba(0,0,0,0.85)]">
 									<GooglePlayIcon className="h-7 w-7" />
 									<span className="flex flex-col items-start leading-none">
-										<span className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/70">
-											{messages.getItOn}
+										<span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/70">
+											{messages.googlePlayCtaLead}
 										</span>
 										<span className="text-base font-semibold">{messages.googlePlay}</span>
 									</span>
@@ -133,6 +138,7 @@ export default function Hero({ messages }: { messages: Messages["hero"] }) {
 
 								<a
 								href={APP_STORE_URL}
+								onClick={() => trackEvent("click_appstore", { placement: "hero_primary" })}
 								className="relative isolate inline-flex w-full max-w-[200px] rounded-md p-[1px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7DD3FC]"
 								aria-label={messages.appStoreAria}
 							>
@@ -144,16 +150,23 @@ export default function Hero({ messages }: { messages: Messages["hero"] }) {
 									aria-hidden="true"
 									className="absolute inset-0 -z-10 rounded-md bg-gradient-to-r from-[#7DD3FC] via-[#C4B5FD] to-[#F6A6C1] opacity-70"
 								/>
-								<span className="inline-flex w-full items-center justify-start gap-3 rounded-[5px] bg-black px-3 py-3 pr-4 text-white ring-1 ring-white/15 shadow-[0_12px_30px_-12px_rgba(0,0,0,0.85)]">
-									<AppStoreIcon className="h-7 w-7" />
+								<span className="inline-flex min-h-[58px] w-full items-center justify-start gap-3 rounded-[5px] bg-black px-3 py-3.5 pr-4 text-white ring-1 ring-white/15 shadow-[0_12px_30px_-12px_rgba(0,0,0,0.85)]">
+									<AppStoreIcon className="h-[34px] w-[34px]" />
 									<span className="flex flex-col items-start leading-none">
-										<span className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/70">
-											{messages.getItOn}
+										<span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/70">
+											{messages.appStoreCtaLead}
 										</span>
 										<span className="text-base font-semibold">{messages.appStore}</span>
 									</span>
 								</span>
 								</a>
+							</div>
+
+							<div className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-left text-white/75 shadow-sm backdrop-blur sm:w-auto">
+								<h2 className="text-sm font-semibold text-white/90">{messages.seoHeading}</h2>
+								<p className="mt-1 text-xs leading-relaxed text-white/70">
+									{messages.seoText}
+								</p>
 							</div>
 
 							<div className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-2.5 text-xs text-white/75 shadow-sm backdrop-blur sm:w-auto">
@@ -176,7 +189,7 @@ export default function Hero({ messages }: { messages: Messages["hero"] }) {
 							<div className="overflow-hidden rounded-3xl border border-white/10 shadow-[0_24px_80px_-52px_rgba(0,0,0,0.95)]">
 								<Image
 									src="/screenshots/1.png"
-									alt="Baby Growth Tracker – AI screenshot 1"
+									alt="baby tracker app sleep feeding newborn tracking"
 									width={1080}
 									height={1920}
 									priority
@@ -188,7 +201,7 @@ export default function Hero({ messages }: { messages: Messages["hero"] }) {
 							<div className="overflow-hidden rounded-3xl border border-white/10 shadow-[0_24px_80px_-52px_rgba(0,0,0,0.95)]">
 								<Image
 									src="/screenshots/2.png"
-									alt="Baby Growth Tracker – AI screenshot 2"
+									alt="baby tracker app sleep feeding newborn tracking"
 									width={1080}
 									height={1920}
 									sizes="(min-width: 1024px) 260px, (min-width: 640px) 50vw, 90vw"

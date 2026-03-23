@@ -3,6 +3,7 @@
 import { motion, useMotionValue, useReducedMotion, useAnimationFrame } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Messages } from "@/i18n/messages";
+import { trackEvent } from "@/lib/analytics";
 
 type Review = {
   rating: 5;
@@ -84,6 +85,7 @@ function ReviewCard({
           href={GOOGLE_PLAY_URL}
           target="_blank"
           rel="noreferrer"
+          onClick={() => trackEvent("click_googleplay", { placement: "reviews_card" })}
           aria-label={viewOnGooglePlayAria}
           className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.02] p-1.5 opacity-90 shadow-[0_10px_30px_-24px_rgba(0,0,0,0.90)] backdrop-blur transition hover:opacity-100"
         >

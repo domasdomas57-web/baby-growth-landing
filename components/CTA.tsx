@@ -1,4 +1,7 @@
+"use client";
+
 import type { Messages } from "@/i18n/messages";
+import { trackEvent } from "@/lib/analytics";
 
 const GOOGLE_PLAY_URL =
 	"https://play.google.com/store/apps/details?id=com.domce23.babygrowthtracker&hl=en";
@@ -91,7 +94,7 @@ export default function CTA({ messages }: { messages: Messages["cta"] }) {
 export function CTASection({
 	title = "Ready for calmer days?",
 	description =
-		"Download Baby Growth Tracker – AI to track sleep, feeding, and growth with AI insights and gentle warnings.",
+		"Download Baby Tracker: Feed & Sleep Log to track sleep, feeding, and growth with AI insights and gentle warnings.",
 	note = "Fast setup • Multiple caregivers • Privacy-first",
 	googlePlayAria = "Download on Google Play",
 	appStoreAria = "Download on the App Store",
@@ -123,6 +126,7 @@ export function CTASection({
 					<div className="mt-7 flex flex-col items-center gap-3">
 						<a
 							href={GOOGLE_PLAY_URL}
+							onClick={() => trackEvent("click_googleplay", { placement: "cta_section" })}
 							className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl bg-white px-6 py-4 text-base font-semibold text-black shadow-sm ring-1 ring-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
 							aria-label={googlePlayAria}
 						>
@@ -134,6 +138,7 @@ export function CTASection({
 						</a>
 						<a
 							href={APP_STORE_URL}
+							onClick={() => trackEvent("click_appstore", { placement: "cta_section" })}
 							className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl bg-white px-6 py-4 text-base font-semibold text-black shadow-sm ring-1 ring-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
 							aria-label={appStoreAria}
 						>

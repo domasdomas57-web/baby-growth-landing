@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 const GOOGLE_PLAY_URL =
   "https://play.google.com/store/apps/details?id=com.domce23.babygrowthtracker&hl=en";
@@ -86,6 +87,7 @@ export default function Footer({
                 href={GOOGLE_PLAY_URL}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => trackEvent("click_googleplay", { placement: "footer" })}
                 className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_60px_-44px_rgba(0,0,0,0.95)] backdrop-blur transition hover:border-white/25 hover:bg-white/[0.06]"
               >
                 {messages.googlePlayCta}
@@ -95,6 +97,7 @@ export default function Footer({
                 href={APP_STORE_URL}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => trackEvent("click_appstore", { placement: "footer" })}
                 className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_60px_-44px_rgba(0,0,0,0.95)] backdrop-blur transition hover:border-white/25 hover:bg-white/[0.06]"
               >
                 {messages.appStoreCta}

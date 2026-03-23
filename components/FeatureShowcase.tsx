@@ -8,54 +8,12 @@ import type { Messages } from "@/i18n/messages";
 const SCREENSHOTS = [
 	{
 		src: "/screenshots/sleep-predictions.png",
-		alt: "Sleep predictions screen",
 	},
 	{
 		src: "/screenshots/growth-tracking.png",
-		alt: "Growth tracking charts screen",
 	},
 	{
 		src: "/screenshots/ai-insights.png",
-		alt: "AI insights screen",
-	},
-] as const;
-
-const LEARN_MORE = [
-	{
-		heading: "How sleep predictions work",
-		paragraphs: [
-			"Log naps and wake windows, and the app learns your baby’s rhythm over time. It uses your recent patterns to estimate the next best nap window.",
-			"Instead of guessing, you get a clear ‘what’s next’ view—helpful for planning feeds, errands, and smoother transitions before overtiredness kicks in.",
-		],
-		bullets: [
-			"Next-nap window based on recent patterns",
-			"Quick at-a-glance timing for your day",
-			"Adapts as routines change week to week",
-		],
-	},
-	{
-		heading: "Track growth with clarity",
-		paragraphs: [
-			"Keep height, weight, and head circumference in one place, with charts that make trends obvious at a glance.",
-			"It’s designed to be easy to review during checkups—so you can share progress confidently without digging through notes.",
-		],
-		bullets: [
-			"Clear charts for quick trend spotting",
-			"All measurements organized over time",
-			"Fast sharing during pediatric visits",
-		],
-	},
-	{
-		heading: "Turn logs into insights",
-		paragraphs: [
-			"Daily tracking is only useful if it leads to better decisions. AI Insights highlight patterns across sleep, feeding, and routines.",
-			"You’ll see what’s changing, what’s consistent, and where small tweaks could make your day easier—without drowning you in data.",
-		],
-		bullets: [
-			"Pattern highlights across days",
-			"Signals when routines shift",
-			"Actionable summaries you can use",
-		],
 	},
 ] as const;
 
@@ -101,7 +59,7 @@ export default function FeatureShowcase({
 	const [openIndex, setOpenIndex] = useState<number | null>(null);
 
 	return (
-		<section className="relative overflow-hidden" aria-label="Feature showcase">
+		<section className="relative overflow-hidden" aria-label={messages.ariaLabel}>
 			<div className="absolute inset-0 -z-10">
 				<div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-indigo-950/70 to-slate-950" />
 				<div className="absolute inset-0 bg-gradient-to-br from-sky-400/5 via-violet-400/5 to-fuchsia-300/5" />
@@ -121,7 +79,8 @@ export default function FeatureShowcase({
 				<div className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:grid md:snap-none md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0">
 					{messages.tabs.map((tab, idx) => {
 						const screenshot = SCREENSHOTS[idx] ?? SCREENSHOTS[0];
-						const more = LEARN_MORE[idx] ?? LEARN_MORE[0];
+						const screenshotAlt = messages.screenshotAlts[idx] ?? messages.screenshotAlts[0];
+						const more = messages.learnMorePanels[idx] ?? messages.learnMorePanels[0];
 						const panelId = `${baseId}-${idx}`;
 						const isOpen = openIndex === idx;
 
@@ -137,7 +96,7 @@ export default function FeatureShowcase({
 								<div className="absolute inset-0 -z-10 bg-gradient-to-br from-sky-400/10 via-violet-400/10 to-fuchsia-300/10" />
 
 								<div className="flex flex-col items-center text-center">
-									<PhoneMockup src={screenshot.src} alt={screenshot.alt} />
+									<PhoneMockup src={screenshot.src} alt={screenshotAlt} />
 
 									<h3 className="mt-6 text-balance text-lg font-semibold tracking-tight text-white sm:text-xl">
 										{tab.title}
