@@ -13,7 +13,7 @@ export default function PhoneMockup({ videoSrc, poster, className = "" }: PhoneM
       <div className="pointer-events-none absolute left-1/2 top-[96%] -z-10 h-10 w-[72%] -translate-x-1/2 rounded-full bg-black/35 blur-xl sm:h-12 sm:w-[70%]" />
 
       <div className="phone-float">
-        <div className="transform-gpu transition-transform duration-300 ease-out [transform-style:preserve-3d] [transform:perspective(1000px)_rotateY(-10deg)_rotateX(5deg)] sm:[transform:perspective(1000px)_rotateY(-13deg)_rotateX(7deg)] lg:[transform:perspective(1000px)_rotateY(-16deg)_rotateX(8deg)] hover:[transform:perspective(1000px)_rotateY(-9deg)_rotateX(4deg)_scale(1.04)]">
+        <div className="transform-gpu transition-transform duration-300 ease-out [transform-style:preserve-3d] [transform:perspective(1000px)_rotateY(-7deg)_rotateX(4deg)] sm:[transform:perspective(1000px)_rotateY(-13deg)_rotateX(7deg)] lg:[transform:perspective(1000px)_rotateY(-16deg)_rotateX(8deg)] hover:[transform:perspective(1000px)_rotateY(-9deg)_rotateX(4deg)_scale(1.04)]">
           <div className="relative rounded-[40px] bg-gradient-to-br from-zinc-300 via-zinc-500 to-zinc-800 p-[2px] shadow-[0_44px_95px_-40px_rgba(4,7,35,0.9),0_22px_48px_-30px_rgba(4,7,35,0.8)]">
             <div className="pointer-events-none absolute inset-y-10 right-[-7px] z-30 w-[7px] rounded-r-[9px] bg-gradient-to-b from-zinc-200/60 via-zinc-500/80 to-zinc-800/90 shadow-[2px_0_8px_rgba(0,0,0,0.35)]" />
 
@@ -29,7 +29,7 @@ export default function PhoneMockup({ videoSrc, poster, className = "" }: PhoneM
               <div className="relative overflow-hidden rounded-[32px] bg-black shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)]">
                 <video
                   src={videoSrc}
-                  className="h-[500px] w-[236px] object-cover sm:h-[560px] sm:w-[262px] lg:h-[620px] lg:w-[290px]"
+                  className="h-[440px] w-[208px] object-cover sm:h-[560px] sm:w-[262px] lg:h-[620px] lg:w-[290px]"
                   autoPlay
                   loop
                   muted

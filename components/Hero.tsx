@@ -86,7 +86,7 @@ function StoreButton({
 			rel="noopener noreferrer"
 			onClick={onClick}
 			aria-label={ariaLabel}
-			className="group inline-flex min-w-[190px] items-center gap-3 rounded-xl bg-black px-4 py-3 text-white ring-1 ring-black/85 transition hover:-translate-y-0.5 hover:ring-indigo-400/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+			className="group inline-flex min-w-[162px] items-center gap-3 rounded-xl bg-black px-3.5 py-3 text-white ring-1 ring-black/85 transition hover:-translate-y-0.5 hover:ring-indigo-400/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 sm:min-w-[190px] sm:px-4"
 		>
 			<span className="inline-flex h-8 w-8 items-center justify-center text-white">
 				{icon}
@@ -276,6 +276,14 @@ export default function Hero({ messages }: { messages: Messages["hero"] }) {
 							</div>
 						</div>
 					</div>
+				</div>
+
+				<div className="mt-8 flex justify-center lg:hidden">
+					<PhoneMockup
+						videoSrc={HERO_VIDEO_URL}
+						poster="/screenshots/1.png"
+						className="scale-[0.86] sm:scale-95"
+					/>
 				</div>
 
 				<div className="hidden lg:absolute lg:right-[-180px] lg:top-[74px] lg:block xl:right-[-220px] xl:top-[62px]">
