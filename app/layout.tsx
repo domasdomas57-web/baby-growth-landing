@@ -60,7 +60,9 @@ export default async function RootLayout({
         <AnalyticsRouteTracker />
         <LanguagePicker locale={locale} messagesByLocale={messagesByLocale} />
         <div className="flex-1">{children}</div>
-        <Footer messages={messages.footer} />
+        <div id="contact">
+          <Footer messages={messages.footer} />
+        </div>
       </body>
     </html>
   );

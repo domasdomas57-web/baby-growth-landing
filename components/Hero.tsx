@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import type { SVGProps } from "react";
+import type { ReactNode, SVGProps } from "react";
 import type { Messages } from "@/i18n/messages";
 import { trackEvent } from "@/lib/analytics";
 
@@ -61,152 +61,155 @@ function AppStoreIcon(props: SVGProps<SVGSVGElement>) {
 	);
 }
 
-export default function Hero({ messages }: { messages: Messages["hero"] }) {
+function StoreButton({
+	href,
+	ariaLabel,
+	icon,
+	lead,
+	store,
+	onClick,
+}: {
+	href: string;
+	ariaLabel: string;
+	icon: ReactNode;
+	lead: string;
+	store: string;
+	onClick: () => void;
+}) {
 	return (
-		<section className="relative overflow-hidden" aria-labelledby="hero-title">
+		<a
+			href={href}
+			target="_blank"
+			rel="noopener noreferrer"
+			onClick={onClick}
+			aria-label={ariaLabel}
+			className="group inline-flex min-w-[190px] items-center gap-3 rounded-xl bg-black px-4 py-3 text-white ring-1 ring-black/85 transition hover:-translate-y-0.5 hover:ring-indigo-400/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+		>
+			<span className="inline-flex h-8 w-8 items-center justify-center text-white">
+				{icon}
+			</span>
+			<span className="flex flex-col leading-none">
+				<span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70">
+					{lead}
+				</span>
+				<span className="mt-1 text-base font-semibold">{store}</span>
+			</span>
+		</a>
+	);
+}
+
+export default function Hero({ messages }: { messages: Messages["hero"] }) {
+	const navItems = [
+		{ label: "Features", href: "#features" },
+		{ label: "Showcase", href: "#showcase" },
+		{ label: "Reviews", href: "#reviews" },
+		{ label: "Contact", href: "#contact" },
+	];
+
+	return (
+		<section className="relative overflow-hidden pb-14 pt-10 sm:pb-20 sm:pt-14" aria-labelledby="hero-title">
 			<div className="absolute inset-0 -z-10">
-				<div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-indigo-950/90 to-slate-950" />
-				<div className="absolute inset-0 bg-gradient-to-br from-[#7DD3FC]/10 via-[#C4B5FD]/10 to-[#F6A6C1]/10" />
-				<div className="absolute -top-24 left-1/2 h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-gradient-to-r from-[#7DD3FC]/25 via-[#C4B5FD]/25 to-[#F6A6C1]/25 blur-3xl" />
-				<div className="absolute bottom-[-240px] left-[-200px] h-[560px] w-[560px] rounded-full bg-[#7DD3FC]/10 blur-3xl" />
-				<div className="absolute bottom-[-300px] right-[-240px] h-[680px] w-[680px] rounded-full bg-[#F6A6C1]/10 blur-3xl" />
+				<div className="absolute inset-0 bg-gradient-to-br from-[#6f79ff] via-[#5b4fd8] to-[#3f58d6]" />
+				<div className="absolute -top-28 left-1/2 h-[440px] w-[840px] -translate-x-1/2 rounded-full bg-[#b8bfff]/20 blur-3xl" />
+				<div className="absolute bottom-[-180px] left-[-120px] h-[420px] w-[420px] rounded-full bg-[#7cc8ff]/20 blur-3xl" />
+				<div className="absolute right-[-140px] top-[-80px] h-[300px] w-[300px] rounded-full bg-[#8f6cff]/20 blur-3xl" />
 			</div>
 
-			<a
-				href={GOOGLE_PLAY_URL}
-				target="_blank"
-				rel="noreferrer"
-				onClick={() => trackEvent("click_googleplay", { placement: "hero_icon" })}
-				aria-label={messages.googlePlayAria}
-				className="absolute left-5 top-5 z-10 inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] p-2 shadow-[0_18px_60px_-44px_rgba(0,0,0,0.95)] backdrop-blur transition hover:bg-white/[0.09] sm:left-6 sm:top-6 lg:left-10 lg:top-8"
-			>
-				<Image
-					src="/icon.png"
-					alt="baby tracker app sleep feeding newborn tracking"
-					width={56}
-					height={56}
-					className="rounded-2xl"
-					priority
-				/>
-			</a>
+			<div className="mx-auto max-w-6xl px-5 sm:px-6">
+				<div className="mx-auto max-w-3xl text-center text-white">
+					<p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
+						{messages.badge}
+					</p>
+					<h1 id="hero-title" className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-5xl">
+						Baby Tracker
+					</h1>
+					<p className="mt-2 text-base text-white/85 sm:text-xl">{messages.subtitle}</p>
+				</div>
 
-			<div className="mx-auto max-w-6xl px-5 pb-14 pt-12 sm:px-6 sm:pb-20 sm:pt-16">
-				<div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-					<div className="text-center lg:text-left">
-						<div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs font-medium text-white/80 shadow-sm backdrop-blur md:mx-0">
-							<span className="inline-block h-2 w-2 rounded-full bg-[#7DD3FC]" />
-							{messages.badge}
+				<div className="relative mt-8 overflow-hidden rounded-[30px] border border-white/35 bg-white shadow-[0_35px_120px_-60px_rgba(8,15,70,0.95)] sm:mt-10">
+					<div className="absolute inset-y-0 right-0 hidden w-[42%] bg-gradient-to-b from-[#5f89ff] via-[#5f67ff] to-[#5945cd] lg:block" />
+					<div className="absolute -right-24 bottom-[-120px] hidden h-[320px] w-[320px] rounded-full bg-white/25 blur-3xl lg:block" />
+
+					<div className="relative border-b border-slate-200 px-4 py-4 sm:px-6">
+						<div className="flex items-center justify-between gap-4">
+							<div className="inline-flex items-center gap-2">
+								<Image
+									src="/icon.png"
+									alt="Baby Tracker app icon"
+									width={36}
+									height={36}
+									className="rounded-xl"
+									priority
+								/>
+								<p className="text-sm font-semibold text-slate-900">Baby Tracker</p>
+							</div>
+
+							<nav className="hidden items-center gap-5 text-sm font-semibold text-slate-600 md:flex">
+								{navItems.map((item) => (
+									<a key={item.href} href={item.href} className="transition hover:text-indigo-600">
+										{item.label}
+									</a>
+								))}
+							</nav>
 						</div>
-
-						<h1
-							id="hero-title"
-							className="mt-5 text-balance text-2xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl"
-						>
-							{messages.title}
-						</h1>
-
-						<p className="mt-4 text-pretty text-base leading-relaxed text-slate-200/80 sm:text-lg">
-							{messages.subtitle}
-						</p>
-
-						<div className="mt-7 flex flex-col items-stretch gap-2 sm:items-center lg:items-start">
-							<div className="flex w-full flex-wrap items-stretch justify-center gap-2 lg:justify-start">
-								<a
-								href={GOOGLE_PLAY_URL}
-								onClick={() => trackEvent("click_googleplay", { placement: "hero_primary" })}
-								className="relative isolate inline-flex w-full max-w-[200px] rounded-md p-[1px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7DD3FC]"
-								aria-label={messages.googlePlayAria}
-							>
-								<span
-									aria-hidden="true"
-									className="absolute -inset-2 -z-10 rounded-[10px] bg-gradient-to-r from-[#7DD3FC] via-[#C4B5FD] to-[#F6A6C1] opacity-35 blur-xl"
-								/>
-								<span
-									aria-hidden="true"
-									className="absolute inset-0 -z-10 rounded-md bg-gradient-to-r from-[#7DD3FC] via-[#C4B5FD] to-[#F6A6C1] opacity-70"
-								/>
-								<span className="inline-flex min-h-[58px] w-full items-center justify-start gap-3 rounded-[5px] bg-black px-3 py-3.5 pr-4 text-white ring-1 ring-white/15 shadow-[0_12px_30px_-12px_rgba(0,0,0,0.85)]">
-									<GooglePlayIcon className="h-7 w-7" />
-									<span className="flex flex-col items-start leading-none">
-										<span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/70">
-											{messages.googlePlayCtaLead}
-										</span>
-										<span className="text-base font-semibold">{messages.googlePlay}</span>
-									</span>
-								</span>
-								</a>
-
-								<a
-								href={APP_STORE_URL}
-								onClick={() => trackEvent("click_appstore", { placement: "hero_primary" })}
-								className="relative isolate inline-flex w-full max-w-[200px] rounded-md p-[1px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7DD3FC]"
-								aria-label={messages.appStoreAria}
-							>
-								<span
-									aria-hidden="true"
-									className="absolute -inset-2 -z-10 rounded-[10px] bg-gradient-to-r from-[#7DD3FC] via-[#C4B5FD] to-[#F6A6C1] opacity-35 blur-xl"
-								/>
-								<span
-									aria-hidden="true"
-									className="absolute inset-0 -z-10 rounded-md bg-gradient-to-r from-[#7DD3FC] via-[#C4B5FD] to-[#F6A6C1] opacity-70"
-								/>
-								<span className="inline-flex min-h-[58px] w-full items-center justify-start gap-3 rounded-[5px] bg-black px-3 py-3.5 pr-4 text-white ring-1 ring-white/15 shadow-[0_12px_30px_-12px_rgba(0,0,0,0.85)]">
-									<AppStoreIcon className="h-[34px] w-[34px]" />
-									<span className="flex flex-col items-start leading-none">
-										<span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/70">
-											{messages.appStoreCtaLead}
-										</span>
-										<span className="text-base font-semibold">{messages.appStore}</span>
-									</span>
-								</span>
-								</a>
-							</div>
-
-							<div className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-left text-white/75 shadow-sm backdrop-blur sm:w-auto">
-								<h2 className="text-sm font-semibold text-white/90">{messages.seoHeading}</h2>
-								<p className="mt-1 text-xs leading-relaxed text-white/70">
-									{messages.seoText}
-								</p>
-							</div>
-
-							<div className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-2.5 text-xs text-white/75 shadow-sm backdrop-blur sm:w-auto">
-								<div className="flex items-center gap-2">
-									<span className="font-medium text-white/90">{messages.privacyTitle}</span>
-									<span className="text-white/60">•</span>
-									<span className="text-white/70">{messages.privacySubtitle}</span>
-								</div>
-							</div>
-						</div>
-
-						<p className="mt-4 text-xs text-slate-200/60">
-							{messages.noAdsNote}
-						</p>
 					</div>
 
-					<div className="relative mx-auto w-full max-w-[360px] sm:max-w-[400px] lg:max-w-[520px]">
-						<div className="absolute -inset-6 -z-10 rounded-[32px] bg-gradient-to-br from-[#7DD3FC]/15 via-[#C4B5FD]/10 to-[#F6A6C1]/10 blur-2xl" />
-						<div className="grid items-end gap-5 sm:grid-cols-2">
-							<div className="overflow-hidden rounded-3xl border border-white/10 shadow-[0_24px_80px_-52px_rgba(0,0,0,0.95)]">
-								<Image
-									src="/screenshots/1.png"
-									alt="baby tracker app sleep feeding newborn tracking"
-									width={1080}
-									height={1920}
-									priority
-									sizes="(min-width: 1024px) 260px, (min-width: 640px) 50vw, 90vw"
-									className="h-auto w-full"
+					<div className="relative grid gap-7 px-4 py-7 sm:px-6 sm:py-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-10 lg:px-8">
+						<div>
+							<h2 className="text-balance text-3xl font-semibold leading-tight text-slate-900 sm:text-4xl">
+								{messages.title}
+							</h2>
+							<p className="mt-4 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
+								{messages.seoText}
+							</p>
+
+							<div className="mt-6 flex flex-wrap gap-3">
+								<StoreButton
+									href={APP_STORE_URL}
+									ariaLabel={messages.appStoreAria}
+									lead={messages.appStoreCtaLead}
+									store={messages.appStore}
+									onClick={() => trackEvent("click_appstore", { placement: "hero_primary" })}
+									icon={<AppStoreIcon className="h-8 w-8" />}
+								/>
+								<StoreButton
+									href={GOOGLE_PLAY_URL}
+									ariaLabel={messages.googlePlayAria}
+									lead={messages.googlePlayCtaLead}
+									store={messages.googlePlay}
+									onClick={() => trackEvent("click_googleplay", { placement: "hero_primary" })}
+									icon={<GooglePlayIcon className="h-8 w-8" />}
 								/>
 							</div>
 
-							<div className="overflow-hidden rounded-3xl border border-white/10 shadow-[0_24px_80px_-52px_rgba(0,0,0,0.95)]">
-								<Image
-									src="/screenshots/2.png"
-									alt="baby tracker app sleep feeding newborn tracking"
-									width={1080}
-									height={1920}
-									sizes="(min-width: 1024px) 260px, (min-width: 640px) 50vw, 90vw"
-									className="h-auto w-full"
-								/>
+							<p className="mt-4 text-xs font-medium text-slate-500">{messages.noAdsNote}</p>
+						</div>
+
+						<div className="relative mx-auto w-full max-w-[420px] lg:max-w-none">
+							<div className="absolute left-1/2 top-8 -z-10 h-48 w-48 -translate-x-1/2 rounded-full bg-indigo-300/45 blur-3xl lg:top-12" />
+							<div className="grid grid-cols-2 items-end gap-4">
+								<div className="overflow-hidden rounded-3xl border border-white/50 shadow-[0_30px_70px_-38px_rgba(18,25,88,0.55)]">
+									<Image
+										src="/screenshots/1.png"
+										alt="Baby Tracker sleep and feeding dashboard"
+										width={1080}
+										height={1920}
+										priority
+										sizes="(min-width: 1024px) 210px, (min-width: 640px) 38vw, 46vw"
+										className="h-auto w-full"
+									/>
+								</div>
+
+								<div className="translate-y-6 overflow-hidden rounded-3xl border border-white/50 shadow-[0_30px_70px_-38px_rgba(18,25,88,0.55)]">
+									<Image
+										src="/screenshots/2.png"
+										alt="Baby Tracker daily activity summary"
+										width={1080}
+										height={1920}
+										sizes="(min-width: 1024px) 210px, (min-width: 640px) 38vw, 46vw"
+										className="h-auto w-full"
+									/>
+								</div>
 							</div>
 						</div>
 					</div>

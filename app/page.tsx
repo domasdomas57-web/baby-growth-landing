@@ -12,9 +12,13 @@ export default async function Home() {
   return (
     <main>
       <Hero messages={messages.hero} />
-      <FeatureShowcase messages={messages.featureShowcase} />
-      <ReviewsMarquee messages={messages.reviews} />
-      <section className="relative overflow-hidden bg-slate-950 text-white">
+      <div id="showcase">
+        <FeatureShowcase messages={messages.featureShowcase} />
+      </div>
+      <div id="reviews">
+        <ReviewsMarquee messages={messages.reviews} />
+      </div>
+      <section id="features" className="relative overflow-hidden bg-slate-950 text-white">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-indigo-950/70 to-slate-950" />
           <div className="absolute inset-0 bg-gradient-to-br from-sky-400/5 via-violet-400/5 to-fuchsia-300/5" />
