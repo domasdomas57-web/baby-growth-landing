@@ -6,6 +6,7 @@ export type Messages = {
     title: string;
     subtitle: string;
     badge: string;
+    followUsOn: string;
     tagline: string;
     googlePlayAria: string;
     appStoreAria: string;
@@ -80,6 +81,7 @@ const en: Messages = {
     subtitle:
       "Track baby sleep, feeding, diapers and daily routines with a smart baby tracker app designed for modern parents and newborn care.",
     badge: "AI-powered baby care insights",
+    followUsOn: "Follow us on",
     tagline: "Track sleep • feeding • growth with AI insights",
     googlePlayAria: "Download on Google Play",
     appStoreAria: "Download on the App Store",
@@ -244,6 +246,7 @@ const lt: Messages = {
     subtitle:
       "Sekite kūdikio miegą, maitinimą, sauskelnes ir dienos rutiną su išmania sekimo programėle, sukurta šiuolaikiniams tėvams ir naujagimio priežiūrai.",
     badge: "AI įžvalgos kasdienei kūdikio priežiūrai",
+    followUsOn: "Sekite mus",
     tagline: "Sekite miegą • maitinimą • augimą su AI įžvalgomis",
     googlePlayAria: "Atsisiųsti iš Google Play",
     appStoreAria: "Atsisiųsti iš App Store",

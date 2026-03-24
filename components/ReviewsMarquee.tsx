@@ -6,13 +6,17 @@ import type { Messages } from "@/i18n/messages";
 import { trackEvent } from "@/lib/analytics";
 
 type Review = {
-  rating: 5;
+  rating: 3 | 4 | 5;
+  source: "google-play" | "app-store";
   text: string;
   name: string;
 };
 
 const GOOGLE_PLAY_URL =
   "https://play.google.com/store/apps/details?id=com.domce23.babygrowthtracker&hl=en";
+
+const APP_STORE_URL =
+  "https://apps.apple.com/lt/app/baby-tracker-ai-soriva/id6759395777";
 
 function GooglePlayIcon({ className }: { className?: string }) {
   return (
@@ -38,6 +42,27 @@ function GooglePlayIcon({ className }: { className?: string }) {
       <path
         d="M19.6 10.1c1 .6 1.4 1.2 1.4 1.9s-.4 1.3-1.4 1.9l-1.6.9-4.1-2.1 4.1-2.1 1.6.9Z"
         fill="#EA4335"
+      />
+    </svg>
+  );
+}
+
+function AppStoreIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+      className={className}
+    >
+      <path
+        d="M16.9 13.3c0-2 1.6-3 1.7-3.1-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.8-3.1.8-.6 0-1.6-.8-2.7-.8-1.4 0-2.6.8-3.3 2-1.4 2.4-.4 6 1 7.9.7.9 1.5 1.9 2.6 1.9 1 0 1.4-.7 2.7-.7s1.6.7 2.7.7c1.1 0 1.9-1 2.6-1.9.8-1.2 1.1-2.3 1.1-2.4-.1 0-2.3-.9-2.3-3.7Z"
+        fill="currentColor"
+      />
+      <path
+        d="M14.7 5.4c.6-.7 1-1.7.9-2.7-.9.1-2 .6-2.6 1.4-.6.7-1.1 1.7-.9 2.7 1 0 2-.6 2.6-1.4Z"
+        fill="currentColor"
       />
     </svg>
   );
@@ -73,6 +98,8 @@ function ReviewCard({
   review: Review;
   viewOnGooglePlayAria: string;
 }) {
+  const isGooglePlay = review.source === "google-play";
+
   return (
     <article className="flex min-h-[210px] w-[260px] shrink-0 flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-5 shadow-[0_22px_70px_-52px_rgba(0,0,0,0.95)] backdrop-blur sm:min-h-[220px] sm:w-[300px]">
       <Stars count={review.rating} />
@@ -81,16 +108,29 @@ function ReviewCard({
       </p>
       <div className="mt-auto flex items-center justify-between gap-4 pt-4">
         <p className="text-sm font-medium text-white/85">{review.name}</p>
-        <a
-          href={GOOGLE_PLAY_URL}
-          target="_blank"
-          rel="noreferrer"
-          onClick={() => trackEvent("click_googleplay", { placement: "reviews_card" })}
-          aria-label={viewOnGooglePlayAria}
-          className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.02] p-1.5 opacity-90 shadow-[0_10px_30px_-24px_rgba(0,0,0,0.90)] backdrop-blur transition hover:opacity-100"
-        >
-          <GooglePlayIcon className="h-4 w-4" />
-        </a>
+        {isGooglePlay ? (
+          <a
+            href={GOOGLE_PLAY_URL}
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => trackEvent("click_googleplay", { placement: "reviews_card" })}
+            aria-label={viewOnGooglePlayAria}
+            className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.02] p-1.5 opacity-90 shadow-[0_10px_30px_-24px_rgba(0,0,0,0.90)] backdrop-blur transition hover:opacity-100"
+          >
+            <GooglePlayIcon className="h-4 w-4" />
+          </a>
+        ) : (
+          <a
+            href={APP_STORE_URL}
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => trackEvent("click_appstore", { placement: "reviews_card" })}
+            aria-label="View on App Store"
+            className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.02] p-1.5 opacity-90 shadow-[0_10px_30px_-24px_rgba(0,0,0,0.90)] backdrop-blur transition hover:opacity-100"
+          >
+            <AppStoreIcon className="h-4 w-4 text-white/90" />
+          </a>
+        )}
       </div>
     </article>
   );
@@ -99,31 +139,37 @@ function ReviewCard({
 export default function ReviewsMarquee({ messages }: { messages: Messages["reviews"] }) {
   const shouldReduceMotion = useReducedMotion();
   const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
 
   const reviews = useMemo<readonly Review[]>(
     () => [
       {
-        rating: 5,
+        rating: 4,
+        source: "google-play",
         text: "The charts are super clear and the daily logging is actually quick. It’s helped us stay consistent without feeling overwhelmed.",
         name: "Emily R.",
       },
       {
-        rating: 5,
+        rating: 3,
+        source: "app-store",
         text: "Sleep predictions are surprisingly accurate for our little one. The next-nap timing alone has been worth it.",
         name: "James K.",
       },
       {
         rating: 5,
+        source: "google-play",
         text: "Love the clean design. AI insights feel practical—not random tips—and it’s easy to spot patterns across days.",
         name: "Sofia M.",
       },
       {
-        rating: 5,
+        rating: 4,
+        source: "app-store",
         text: "Great for sharing updates during checkups. Everything is organized and the growth trends are obvious at a glance.",
         name: "Daniel P.",
       },
       {
         rating: 5,
+        source: "google-play",
         text: "Finally an app that looks premium and stays fast. The interface is smooth and the summaries are really helpful.",
         name: "Ava L.",
       },
@@ -134,6 +180,15 @@ export default function ReviewsMarquee({ messages }: { messages: Messages["revie
   const x = useMotionValue(0);
   const setRef = useRef<HTMLDivElement | null>(null);
   const [setWidth, setSetWidth] = useState(0);
+
+  const normalizeX = () => {
+    if (setWidth <= 0) return;
+
+    let current = x.get();
+    while (current <= -setWidth) current += setWidth;
+    while (current > 0) current -= setWidth;
+    x.set(current);
+  };
 
   useEffect(() => {
     const el = setRef.current;
@@ -154,6 +209,7 @@ export default function ReviewsMarquee({ messages }: { messages: Messages["revie
   useAnimationFrame((_, delta) => {
     if (shouldReduceMotion) return;
     if (isHovered) return;
+    if (isDragging) return;
     if (setWidth <= 0) return;
 
     const pxPerSecond = 28; // slow, elegant
@@ -178,6 +234,20 @@ export default function ReviewsMarquee({ messages }: { messages: Messages["revie
 
       <div className="w-full px-5 py-12 sm:px-6 sm:py-16 lg:px-10 2xl:px-16">
         <div className="mb-8 text-center">
+          <div className="mb-4 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/[0.08] px-3.5 py-1.5 text-xs text-white/95 shadow-[0_10px_28px_-20px_rgba(0,0,0,0.95)] backdrop-blur">
+              <AppStoreIcon className="h-3.5 w-3.5 text-white/90" />
+              <span className="font-semibold tracking-tight">App Store</span>
+              <span className="text-[10px] text-amber-300">★★★★☆</span>
+              <span className="font-semibold">4.7</span>
+            </div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/[0.08] px-3.5 py-1.5 text-xs text-white/95 shadow-[0_10px_28px_-20px_rgba(0,0,0,0.95)] backdrop-blur">
+              <GooglePlayIcon className="h-3.5 w-3.5" />
+              <span className="font-semibold tracking-tight">Google Play</span>
+              <span className="text-[10px] text-amber-300">★★★★★</span>
+              <span className="font-semibold">4.8</span>
+            </div>
+          </div>
           <h2 className="text-balance text-2xl font-semibold tracking-tight text-white sm:text-3xl">
             {messages.title}
           </h2>
@@ -197,7 +267,16 @@ export default function ReviewsMarquee({ messages }: { messages: Messages["revie
           <div className="overflow-hidden">
             <motion.div
               style={{ x }}
-              className="flex w-max items-stretch gap-4 py-2 will-change-transform sm:gap-5"
+              drag="x"
+              dragMomentum={false}
+              dragElastic={0.06}
+              dragConstraints={{ left: -setWidth, right: 0 }}
+              onDragStart={() => setIsDragging(true)}
+              onDragEnd={() => {
+                setIsDragging(false);
+                normalizeX();
+              }}
+              className="flex w-max items-stretch gap-4 py-2 will-change-transform touch-pan-y cursor-grab active:cursor-grabbing sm:gap-5"
             >
               <div ref={setRef} className="flex items-stretch gap-4 sm:gap-5">
                 {reviews.map((review, idx) => (
