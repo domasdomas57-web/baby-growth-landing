@@ -477,15 +477,6 @@ export default function PremiumLanding({ messages }: { messages: PremiumLandingM
 
           <div className="flex flex-wrap items-center gap-2 md:hidden">
             <DownloadDropdown messages={messages.downloadMenu} buttonLabel={messages.nav.download} variant="cta" />
-            {navItems.map((item) => (
-              <a
-                key={`mobile-${item.href}`}
-                href={item.href}
-                className="inline-flex items-center rounded-full border border-slate-200/80 bg-white/90 px-3.5 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-[0_14px_32px_-24px_rgba(61,89,139,0.42)] transition hover:border-slate-300 hover:text-slate-950"
-              >
-                {item.label}
-              </a>
-            ))}
             <div className="ml-auto flex items-center gap-1.5">
               {SOCIAL_LINKS.map((item) => (
                 <a
