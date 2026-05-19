@@ -80,7 +80,7 @@ export default function LanguagePicker({
   return (
     <div
       ref={containerRef}
-      className="fixed right-4 top-4 z-50 sm:right-6 sm:top-6"
+      className="fixed right-4 top-4 z-50 sm:right-6 sm:top-5"
     >
       <button
         type="button"
@@ -91,8 +91,8 @@ export default function LanguagePicker({
         aria-haspopup="menu"
         aria-expanded={isOpen}
         className={
-          "grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-slate-950/40 text-lg shadow-lg backdrop-blur transition " +
-          "hover:border-white/20 hover:bg-slate-950/55 focus:outline-none focus:ring-2 focus:ring-white/25"
+          "grid h-11 w-11 place-items-center rounded-full border border-white/80 bg-white/78 text-lg shadow-[0_18px_40px_-24px_rgba(90,120,168,0.34)] backdrop-blur-xl transition " +
+          "hover:-translate-y-0.5 hover:bg-white/92 focus:outline-none focus:ring-2 focus:ring-sky-200"
         }
       >
         <Flag code={FLAG_ICONS[locale]} />
@@ -102,7 +102,7 @@ export default function LanguagePicker({
         <div
           role="menu"
           aria-label="Language selector"
-          className="absolute right-0 mt-3 w-max rounded-2xl border border-white/10 bg-slate-950/70 p-2 shadow-2xl backdrop-blur"
+          className="absolute right-0 mt-3 w-max rounded-[1.4rem] border border-white/80 bg-white/86 p-2 shadow-[0_24px_60px_-34px_rgba(90,120,168,0.34)] backdrop-blur-xl"
         >
           <div className="grid grid-cols-3 gap-2">
             {supportedLocales.map((l) => {
@@ -119,8 +119,8 @@ export default function LanguagePicker({
                   className={
                     "grid h-10 w-10 place-items-center rounded-full border text-base shadow-sm transition " +
                     (isActive
-                      ? "border-white/30 bg-white/10"
-                      : "border-white/10 bg-white/[0.03] hover:bg-white/[0.07]")
+                      ? "border-sky-200 bg-sky-50"
+                      : "border-slate-200 bg-white hover:bg-slate-50")
                   }
                 >
                   <Flag code={FLAG_ICONS[l]} />

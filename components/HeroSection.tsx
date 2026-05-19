@@ -69,7 +69,7 @@ export default function HeroSection() {
               id="hero-section-title"
               className="text-balance text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl"
             >
-              The Easiest Way to Track Your Baby's Sleep & Feeding
+              The Easiest Way to Track Your Baby&apos;s Sleep & Feeding
             </h1>
 
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/85 sm:text-xl">

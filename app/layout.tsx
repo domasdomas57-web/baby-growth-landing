@@ -21,8 +21,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Baby Tracker: Feed & Sleep Log",
-  description: "Track sleep, feeding & growth with AI insights",
+  title: "Baby Tracker - Soriva",
+  description: "Simple baby tracker app for feeding, sleep, diapers, pumping and daily baby routines.",
+  openGraph: {
+    title: "Baby Tracker - Soriva",
+    description: "Simple baby tracker app for feeding, sleep, diapers, pumping and daily baby routines.",
+    siteName: "Baby Tracker - Soriva",
+    type: "website",
+  },
+  twitter: {
+    title: "Baby Tracker - Soriva",
+    description: "Simple baby tracker app for feeding, sleep, diapers, pumping and daily baby routines.",
+    card: "summary_large_image",
+  },
   icons: {
     icon: [{ url: "/icon.png", type: "image/png" }],
   },

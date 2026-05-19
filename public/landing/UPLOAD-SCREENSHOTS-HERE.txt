@@ -1,0 +1,17 @@
+Upload your 10 landing screenshots into this folder with these exact file names:
+
+1. main.png
+2. notification.png
+3. caregivers.png
+4. timeline.png
+5. day-schedule.png
+6. ai-insights.png
+7. growth.png
+8. diapers.png
+9. temperature.png
+10. widgets.png
+
+Notes:
+- Keep file names lowercase.
+- Use PNG for the easiest replacement flow.
+- The landing page is already wired to these names in components/PremiumLanding.tsx.
