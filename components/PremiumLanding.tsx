@@ -441,13 +441,15 @@ export default function PremiumLanding({ messages }: { messages: PremiumLandingM
       <div className="absolute inset-x-0 top-0 -z-10 h-[720px] bg-[radial-gradient(circle_at_top_left,rgba(202,227,255,0.95),transparent_42%),radial-gradient(circle_at_top_right,rgba(255,228,239,0.75),transparent_32%),linear-gradient(180deg,#fffefb_0%,#f6fbff_54%,#fbfcff_100%)]" />
 
       <header className="sticky top-0 z-40 border-b border-white/60 bg-white/72 backdrop-blur-xl">
-        <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4 lg:px-8">
-          <a href="#top" className="inline-flex items-center gap-3 text-sm font-semibold tracking-tight text-slate-950">
-            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(145deg,#dff1ff,#fff4f8)] shadow-[0_14px_30px_-20px_rgba(109,142,191,0.55)] ring-1 ring-sky-100">
-              <Image src="/icon.png" alt={messages.iconAlt} width={28} height={28} className="rounded-xl" />
-            </span>
-            <span className="hidden sm:block">{messages.brandName}</span>
-          </a>
+        <div className="relative mx-auto flex max-w-7xl flex-col gap-3 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4 lg:px-8">
+          <div className="flex items-center justify-between gap-3 pr-14 sm:pr-0">
+            <a href="#top" className="inline-flex items-center gap-3 text-sm font-semibold tracking-tight text-slate-950">
+              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(145deg,#dff1ff,#fff4f8)] shadow-[0_14px_30px_-20px_rgba(109,142,191,0.55)] ring-1 ring-sky-100">
+                <Image src="/icon.png" alt={messages.iconAlt} width={28} height={28} className="rounded-xl" />
+              </span>
+              <span>{messages.brandName}</span>
+            </a>
+          </div>
 
           <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-6 text-sm text-slate-600 md:flex">
             {navItems.map((item) => (
@@ -473,7 +475,32 @@ export default function PremiumLanding({ messages }: { messages: PremiumLandingM
             ))}
           </div>
 
-          <DownloadDropdown messages={messages.downloadMenu} buttonLabel={messages.nav.download} variant="cta" className="md:hidden" />
+          <div className="flex flex-wrap items-center gap-2 md:hidden">
+            <DownloadDropdown messages={messages.downloadMenu} buttonLabel={messages.nav.download} variant="cta" />
+            {navItems.map((item) => (
+              <a
+                key={`mobile-${item.href}`}
+                href={item.href}
+                className="inline-flex items-center rounded-full border border-slate-200/80 bg-white/90 px-3.5 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-[0_14px_32px_-24px_rgba(61,89,139,0.42)] transition hover:border-slate-300 hover:text-slate-950"
+              >
+                {item.label}
+              </a>
+            ))}
+            <div className="ml-auto flex items-center gap-1.5">
+              {SOCIAL_LINKS.map((item) => (
+                <a
+                  key={`mobile-${item.name}`}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={item.name}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#e4dbd1]/95 shadow-[0_14px_30px_-22px_rgba(87,72,58,0.24)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:bg-[#ddd1c4]"
+                >
+                  {item.icon}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </header>
 
