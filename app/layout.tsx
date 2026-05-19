@@ -21,8 +21,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://babytrackersoriva.com"),
   title: "Baby Tracker - Soriva",
   description: "Simple baby tracker app for feeding, sleep, diapers, pumping and daily baby routines.",
+  manifest: "/manifest.webmanifest",
   openGraph: {
     title: "Baby Tracker - Soriva",
     description: "Simple baby tracker app for feeding, sleep, diapers, pumping and daily baby routines.",
@@ -35,7 +37,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
   },
   icons: {
-    icon: [{ url: "/icon.png", type: "image/png" }],
+    icon: [
+      { url: "/favicons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/favicons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: ["/favicons/favicon-32x32.png"],
   },
 };
 
