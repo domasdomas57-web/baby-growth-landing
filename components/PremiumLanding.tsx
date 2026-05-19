@@ -252,9 +252,9 @@ function DownloadDropdown({
         <div
           role="menu"
           aria-label={messages.ariaLabel}
-          className="absolute right-0 top-[calc(100%+0.85rem)] z-20 w-[min(90vw,320px)] overflow-hidden rounded-[1.8rem] border border-slate-200 bg-white/92 p-2.5 shadow-[0_30px_80px_-36px_rgba(61,89,139,0.42)] backdrop-blur-2xl"
+          className="absolute left-0 top-[calc(100%+0.65rem)] z-30 w-[min(78vw,260px)] overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white/92 p-2 shadow-[0_30px_80px_-36px_rgba(61,89,139,0.42)] backdrop-blur-2xl sm:left-auto sm:right-0 sm:top-[calc(100%+0.85rem)] sm:w-[min(90vw,320px)] sm:rounded-[1.8rem] sm:p-2.5"
         >
-          <div className="rounded-[1.45rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(245,250,255,0.96))] p-2">
+          <div className="rounded-[1.25rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(245,250,255,0.96))] p-1.5 sm:rounded-[1.45rem] sm:p-2">
             <a
               href={APP_STORE_URL}
               target="_blank"
@@ -264,9 +264,9 @@ function DownloadDropdown({
                 trackEvent("click_appstore", { placement: `download_menu_${variant}` });
                 setIsOpen(false);
               }}
-              className="group flex items-center gap-4 rounded-full border-2 border-slate-950 bg-white px-4 py-3.5 shadow-[0_16px_34px_-24px_rgba(15,23,42,0.32)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_38px_-22px_rgba(15,23,42,0.38)]"
+              className="group flex items-center gap-3 rounded-full border-2 border-slate-950 bg-white px-3.5 py-2.5 shadow-[0_16px_34px_-24px_rgba(15,23,42,0.32)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_38px_-22px_rgba(15,23,42,0.38)] sm:gap-4 sm:px-4 sm:py-3.5"
             >
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-slate-950 bg-slate-950 text-white shadow-[0_14px_30px_-22px_rgba(15,23,42,0.55)]">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-slate-950 bg-slate-950 text-white shadow-[0_14px_30px_-22px_rgba(15,23,42,0.55)] sm:h-12 sm:w-12">
                 <AppStoreIcon />
               </span>
               <span className="min-w-0 flex-1">
@@ -283,9 +283,9 @@ function DownloadDropdown({
                 trackEvent("click_googleplay", { placement: `download_menu_${variant}` });
                 setIsOpen(false);
               }}
-              className="group mt-2 flex items-center gap-4 rounded-full border-2 border-slate-950 bg-white px-4 py-3.5 shadow-[0_16px_34px_-24px_rgba(15,23,42,0.32)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_38px_-22px_rgba(15,23,42,0.38)]"
+              className="group mt-2 flex items-center gap-3 rounded-full border-2 border-slate-950 bg-white px-3.5 py-2.5 shadow-[0_16px_34px_-24px_rgba(15,23,42,0.32)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_38px_-22px_rgba(15,23,42,0.38)] sm:gap-4 sm:px-4 sm:py-3.5"
             >
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-slate-950 bg-slate-950 text-white shadow-[0_14px_30px_-22px_rgba(15,23,42,0.55)]">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-slate-950 bg-slate-950 text-white shadow-[0_14px_30px_-22px_rgba(15,23,42,0.55)] sm:h-12 sm:w-12">
                 <GooglePlayIcon />
               </span>
               <span className="min-w-0 flex-1">
