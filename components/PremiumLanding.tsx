@@ -4,13 +4,8 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/lib/constants";
 import type { PremiumLandingMessages } from "@/i18n/premiumLanding";
-
-const GOOGLE_PLAY_URL =
-  "https://play.google.com/store/apps/details?id=com.domce23.babygrowthtracker&hl=en";
-
-const APP_STORE_URL =
-  "https://apps.apple.com/lt/app/baby-tracker-ai-soriva/id6759395777";
 
 const SCREENSHOT_ASSETS = {
   main: {
@@ -159,14 +154,38 @@ function GooglePlayIcon() {
   );
 }
 
-function StarRow() {
+function DownloadCtaBand({
+  title,
+  subtitle,
+  messages,
+  placement,
+}: {
+  title: string;
+  subtitle: string;
+  messages: PremiumLandingMessages;
+  placement: string;
+}) {
   return (
-    <div className="flex items-center gap-1 text-amber-400">
-      {Array.from({ length: 5 }).map((_, index) => (
-        <svg key={index} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="h-4 w-4">
-          <path d="m10 1.8 2.53 5.12 5.65.82-4.09 3.99.96 5.63L10 14.68l-5.05 2.66.96-5.63L1.82 7.74l5.65-.82L10 1.8Z" />
-        </svg>
-      ))}
+    <div className="rounded-[2rem] border border-sky-100/80 bg-[linear-gradient(135deg,rgba(255,255,255,0.96),rgba(236,246,255,0.92))] px-5 py-8 text-center shadow-[0_28px_70px_-46px_rgba(90,120,168,0.28)] sm:rounded-[2.5rem] sm:px-10 sm:py-10">
+      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700/80">{title}</p>
+      <p className="mx-auto mt-3 max-w-xl text-pretty text-base leading-8 text-slate-600 sm:text-lg">{subtitle}</p>
+      <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
+        <StoreButton
+          href={APP_STORE_URL}
+          icon={<AppStoreIcon />}
+          label={messages.hero.appStore}
+          eventName="click_appstore"
+          eventPlacement={placement}
+        />
+        <StoreButton
+          href={GOOGLE_PLAY_URL}
+          icon={<GooglePlayIcon />}
+          label={messages.hero.googlePlay}
+          eventName="click_googleplay"
+          eventPlacement={placement}
+        />
+      </div>
+      <p className="mt-4 text-sm text-slate-500">{messages.hero.storeAvailability}</p>
     </div>
   );
 }
@@ -389,6 +408,7 @@ function DeviceFrame({
                 width={760}
                 height={1520}
                 priority={priority}
+                loading={priority ? undefined : "lazy"}
                 className="h-auto w-full object-cover"
               />
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(145deg,rgba(255,255,255,0.55)_0%,rgba(255,255,255,0.18)_28%,rgba(255,255,255,0)_48%)]" />
@@ -514,7 +534,7 @@ export default function PremiumLanding({ messages }: { messages: PremiumLandingM
               <StoreButton
                 href={APP_STORE_URL}
                 icon={<AppStoreIcon />}
-                label={messages.hero.appStore}
+                label={messages.hero.downloadCta}
                 eventName="click_appstore"
                 eventPlacement="hero"
               />
@@ -526,6 +546,7 @@ export default function PremiumLanding({ messages }: { messages: PremiumLandingM
                 eventPlacement="hero"
               />
             </div>
+            <p className="mt-4 text-sm font-medium text-slate-500">{messages.hero.storeAvailability}</p>
 
             <div className="mt-7 flex items-start gap-3 sm:mt-8 sm:items-center sm:gap-4">
               <div className="flex -space-x-3">
@@ -539,6 +560,7 @@ export default function PremiumLanding({ messages }: { messages: PremiumLandingM
                       alt={`${messages.hero.parentAvatarAltPrefix} ${index + 1}`}
                       fill
                       sizes="40px"
+                      loading="lazy"
                       className="object-cover"
                     />
                   </span>
@@ -546,10 +568,9 @@ export default function PremiumLanding({ messages }: { messages: PremiumLandingM
               </div>
               <div>
                 <p className="text-sm font-semibold text-slate-950">{messages.hero.trustTitle}</p>
-                <div className="mt-1 flex items-center gap-2 text-sm text-slate-500">
-                  <StarRow />
-                  <span>{messages.hero.trustSubtitle}</span>
-                </div>
+                {messages.hero.trustSubtitle ? (
+                  <p className="mt-1 text-sm text-slate-500">{messages.hero.trustSubtitle}</p>
+                ) : null}
               </div>
             </div>
           </div>
@@ -558,6 +579,51 @@ export default function PremiumLanding({ messages }: { messages: PremiumLandingM
             <div className="absolute inset-x-10 top-10 -z-10 h-[78%] rounded-full bg-[radial-gradient(circle,rgba(177,218,255,0.95)_0%,rgba(177,218,255,0.3)_35%,transparent_72%)] blur-3xl" />
             <div className="absolute bottom-6 left-0 -z-10 h-44 w-44 rounded-full bg-rose-100/80 blur-3xl" />
             <DeviceFrame src={SCREENSHOT_ASSETS.main.src} alt={SCREENSHOT_ASSETS.main.alt} priority className="max-w-[360px] sm:max-w-[390px] lg:max-w-[410px]" />
+          </div>
+        </div>
+      </section>
+
+      <section id="doctor-report" className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
+        <div className="grid items-center gap-8 rounded-[2.2rem] border border-white/70 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(245,250,255,0.9))] p-5 shadow-[0_32px_90px_-58px_rgba(90,120,168,0.34)] sm:rounded-[2.5rem] sm:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 lg:p-12">
+          <div>
+            <SectionIntro
+              eyebrow={messages.doctorReport.eyebrow}
+              title={messages.doctorReport.title}
+              description={messages.doctorReport.description}
+            />
+          </div>
+          <div className="relative py-4">
+            <div className="absolute inset-x-8 top-10 -z-10 h-44 rounded-full bg-[radial-gradient(circle,rgba(187,224,255,0.92)_0%,rgba(187,224,255,0.28)_48%,transparent_80%)] blur-3xl" />
+            <DeviceFrame
+              src={SCREENSHOT_ASSETS.timeline.src}
+              alt="Baby tracker pediatrician report and daily timeline summary"
+              className="max-w-[340px] sm:max-w-[360px]"
+            />
+          </div>
+        </div>
+        <div className="mt-8">
+          <DownloadCtaBand
+            title={messages.doctorReport.ctaTitle}
+            subtitle={messages.doctorReport.ctaSubtitle}
+            messages={messages}
+            placement="after_doctor_report"
+          />
+        </div>
+      </section>
+
+      <section id="loved-by-parents" className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
+        <div className="grid items-center gap-8 rounded-[2.2rem] border border-white/70 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(245,250,255,0.9))] p-5 shadow-[0_34px_96px_-60px_rgba(90,120,168,0.38)] sm:rounded-[2.5rem] sm:p-8 lg:grid-cols-[0.88fr_1.12fr] lg:gap-16 lg:p-12">
+          <div>
+            <SectionIntro
+              eyebrow={messages.builtByParent.eyebrow}
+              title={messages.builtByParent.title}
+              description={messages.builtByParent.description}
+            />
+            <p className="mt-6 max-w-lg text-base leading-8 text-slate-500">{messages.builtByParent.note}</p>
+          </div>
+          <div className="relative px-4 pt-4 sm:px-8 sm:pt-8">
+            <div className="absolute inset-x-8 top-12 -z-10 h-52 rounded-full bg-[radial-gradient(circle,rgba(187,224,255,0.95)_0%,rgba(187,224,255,0.35)_45%,transparent_78%)] blur-3xl" />
+            <DeviceFrame src={SCREENSHOT_ASSETS.main.src} alt={SCREENSHOT_ASSETS.main.alt} className="max-w-[340px] sm:max-w-[360px]" />
           </div>
         </div>
       </section>
@@ -592,7 +658,7 @@ export default function PremiumLanding({ messages }: { messages: PremiumLandingM
         </div>
 
         <div className="mt-12 space-y-16 sm:mt-20 sm:space-y-32">
-          {featureSections.map((feature) => (
+          {featureSections.map((feature, featureIndex) => (
             <motion.article
               key={feature.title}
               initial={{ opacity: 0, y: 32 }}
@@ -609,6 +675,11 @@ export default function PremiumLanding({ messages }: { messages: PremiumLandingM
                 <p className="mt-5 max-w-xl text-pretty text-base leading-8 text-slate-600 sm:text-lg">
                   {feature.description}
                 </p>
+                {featureIndex === 3 ? (
+                  <p className="mt-4 max-w-xl rounded-2xl border border-amber-100/80 bg-amber-50/70 px-4 py-3 text-sm leading-7 text-amber-950/80">
+                    {messages.aiDisclaimer}
+                  </p>
+                ) : null}
                 <div className="mt-7 inline-flex items-center rounded-full border border-sky-100 bg-sky-50/80 px-4 py-2 text-sm font-medium text-sky-900">
                   {feature.accent}
                 </div>
@@ -622,6 +693,28 @@ export default function PremiumLanding({ messages }: { messages: PremiumLandingM
                 </div>
               </div>
             </motion.article>
+          ))}
+        </div>
+
+        <div className="mt-16 sm:mt-20">
+          <DownloadCtaBand
+            title={messages.downloadMicro.afterFeaturesTitle}
+            subtitle={messages.downloadMicro.afterFeaturesSubtitle}
+            messages={messages}
+            placement="after_features"
+          />
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <div className="rounded-[2.2rem] border border-white/70 bg-white/90 p-6 shadow-[0_28px_70px_-46px_rgba(90,120,168,0.28)] sm:p-10 lg:p-12">
+          <h2 className="text-balance text-2xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-3xl">
+            {messages.seoSection.title}
+          </h2>
+          {messages.seoSection.paragraphs.map((paragraph) => (
+            <p key={paragraph.slice(0, 48)} className="mt-5 text-pretty text-base leading-8 text-slate-600 sm:text-lg">
+              {paragraph}
+            </p>
           ))}
         </div>
       </section>
@@ -655,6 +748,7 @@ export default function PremiumLanding({ messages }: { messages: PremiumLandingM
                     alt={item.alt}
                     width={900}
                     height={1800}
+                    loading="lazy"
                     className="h-[280px] w-full object-cover object-top sm:h-[320px]"
                   />
                 </div>
@@ -679,20 +773,25 @@ export default function PremiumLanding({ messages }: { messages: PremiumLandingM
               {messages.reviews.description}
             </p>
 
-            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            <div className="mt-10 grid gap-3 sm:grid-cols-2">
+              {messages.trust.items.map((item) => (
+                <div
+                  key={item}
+                  className="rounded-[1.5rem] border border-white/70 bg-white/85 px-4 py-3 text-sm font-medium text-slate-700 shadow-[0_18px_50px_-36px_rgba(90,120,168,0.28)]"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="rounded-[1.75rem] border border-white/70 bg-white/85 p-5 shadow-[0_24px_60px_-40px_rgba(90,120,168,0.3)]">
                 <p className="text-sm font-semibold text-slate-950">{messages.reviews.appStoreLabel}</p>
-                <div className="mt-2 flex items-center gap-3">
-                  <StarRow />
-                  <span className="text-sm text-slate-500">{messages.reviews.appStoreNote}</span>
-                </div>
+                <p className="mt-2 text-sm text-slate-500">{messages.reviews.appStoreNote}</p>
               </div>
               <div className="rounded-[1.75rem] border border-white/70 bg-white/85 p-5 shadow-[0_24px_60px_-40px_rgba(90,120,168,0.3)]">
                 <p className="text-sm font-semibold text-slate-950">{messages.reviews.googlePlayLabel}</p>
-                <div className="mt-2 flex items-center gap-3">
-                  <StarRow />
-                  <span className="text-sm text-slate-500">{messages.reviews.googlePlayNote}</span>
-                </div>
+                <p className="mt-2 text-sm text-slate-500">{messages.reviews.googlePlayNote}</p>
               </div>
             </div>
           </div>
@@ -705,8 +804,7 @@ export default function PremiumLanding({ messages }: { messages: PremiumLandingM
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="rounded-[2rem] border border-white/70 bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(248,251,255,0.92))] p-7 shadow-[0_28px_70px_-46px_rgba(90,120,168,0.36)] sm:p-9"
             >
-              <StarRow />
-              <p className="mt-5 max-w-2xl text-xl leading-9 tracking-[-0.02em] text-slate-900 sm:text-2xl">
+              <p className="max-w-2xl text-xl leading-9 tracking-[-0.02em] text-slate-900 sm:text-2xl">
                 “{featuredReview.quote}”
               </p>
               <p className="mt-5 text-sm font-semibold text-slate-950">{featuredReview.name}</p>
@@ -716,15 +814,14 @@ export default function PremiumLanding({ messages }: { messages: PremiumLandingM
             <div className="grid gap-5 md:grid-cols-2">
               {secondaryReviews.map((review) => (
                 <motion.article
-                  key={review.name}
+                  key={review.role}
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                   className="rounded-[1.8rem] border border-white/70 bg-white/88 p-6 shadow-[0_26px_60px_-44px_rgba(90,120,168,0.34)]"
                 >
-                  <StarRow />
-                  <p className="mt-4 text-base leading-8 text-slate-700">“{review.quote}”</p>
+                  <p className="text-base leading-8 text-slate-700">“{review.quote}”</p>
                   <p className="mt-5 text-sm font-semibold text-slate-950">{review.name}</p>
                   <p className="text-sm text-slate-500">{review.role}</p>
                 </motion.article>

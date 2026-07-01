@@ -1,36 +1,36 @@
 import type { MetadataRoute } from "next";
-
-const BASE_URL = "https://babytrackersoriva.com";
+import { BASE_URL } from "@/lib/constants";
+import { SITEMAP_SEO_SLUGS } from "@/lib/seoPages";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages: Array<{
-    path: string;
-    changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
-    priority: number;
-  }> = [
-    {
-      path: "",
-      changeFrequency: "daily",
-      priority: 1,
-    },
-    {
-      path: "/privacy",
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      path: "/terms",
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-  ];
-
   const lastModified = new Date();
 
-  return pages.map(({ path, changeFrequency, priority }) => ({
-    url: `${BASE_URL}${path}`,
+  const seoEntries: MetadataRoute.Sitemap = SITEMAP_SEO_SLUGS.map((slug) => ({
+    url: `${BASE_URL}/${slug}`,
     lastModified,
-    changeFrequency,
-    priority,
+    changeFrequency: "monthly",
+    priority: slug === "baby-tracker-app" ? 0.9 : 0.8,
   }));
+
+  return [
+    {
+      url: `${BASE_URL}/`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 1,
+    },
+    ...seoEntries,
+    {
+      url: `${BASE_URL}/privacy`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.4,
+    },
+    {
+      url: `${BASE_URL}/terms`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.4,
+    },
+  ];
 }

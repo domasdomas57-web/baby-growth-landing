@@ -37,12 +37,41 @@ export type PremiumLandingMessages = {
     badge: string;
     title: string;
     description: string;
+    downloadCta: string;
+    storeAvailability: string;
     appStore: string;
     googlePlay: string;
     trustTitle: string;
     trustSubtitle: string;
     parentAvatarAltPrefix: string;
   };
+  doctorReport: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    ctaTitle: string;
+    ctaSubtitle: string;
+  };
+  builtByParent: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    note: string;
+  };
+  trust: {
+    eyebrow: string;
+    title: string;
+    items: string[];
+  };
+  seoSection: {
+    title: string;
+    paragraphs: string[];
+  };
+  downloadMicro: {
+    afterFeaturesTitle: string;
+    afterFeaturesSubtitle: string;
+  };
+  aiDisclaimer: string;
   story: {
     eyebrow: string;
     title: string;
@@ -79,12 +108,12 @@ export type PremiumLandingMessages = {
 
 const en: PremiumLandingMessages = {
   brandName: "Baby Tracker - Soriva",
-  iconAlt: "Baby Tracker icon",
+  iconAlt: "Baby Tracker - Soriva app icon",
   nav: {
     story: "Story",
     features: "Features",
     reviews: "Reviews",
-    download: "Download",
+    download: "Download free",
   },
   downloadMenu: {
     ariaLabel: "Download app",
@@ -92,15 +121,58 @@ const en: PremiumLandingMessages = {
     googlePlay: "Get it on Google Play",
   },
   hero: {
-    badge: "Calm tracking for modern parents",
-    title: "Sleep better. Track less. Enjoy your baby more.",
-    description: "Track sleep, feeding, diapers, routines and AI insights in one calm, beautiful app.",
+    badge: "Baby tracker for modern parents",
+    title: "Baby tracking made simple for feeds, sleep, diapers and doctor reports.",
+    description:
+      "Track your baby's daily routine, understand patterns, sync with caregivers, and export clear reports when your pediatrician asks.",
+    downloadCta: "Download free",
+    storeAvailability: "Available on App Store and Google Play",
     appStore: "App Store",
     googlePlay: "Google Play",
-    trustTitle: "Trusted by parents worldwide",
-    trustSubtitle: "Calm, reliable, and beautifully simple.",
-    parentAvatarAltPrefix: "Parent testimonial avatar",
+    trustTitle: "Loved by more than 400,000 parents worldwide",
+    trustSubtitle: "",
+    parentAvatarAltPrefix: "Parent using baby tracker app",
   },
+  doctorReport: {
+    eyebrow: "Pediatrician report",
+    title: "Doctor-ready reports in seconds",
+    description:
+      "When your pediatrician asks about feeds, diapers, sleep or growth, you don't have to guess. Export a clear summary for the days or weeks you choose.",
+    ctaTitle: "Start tracking free",
+    ctaSubtitle: "Prepare cleaner summaries for pediatrician visits.",
+  },
+  builtByParent: {
+    eyebrow: "Parents worldwide",
+    title: "Loved by more than 400,000 parents worldwide",
+    description:
+      "Parents around the world use Soriva to track feeds, sleep, diapers, and daily routines in one calm app—without paper notes, guesswork, or cluttered screens.",
+    note: "Available on iPhone and Android. Built for real newborn and infant care, every day.",
+  },
+  trust: {
+    eyebrow: "Trust",
+    title: "Loved by more than 400,000 parents worldwide",
+    items: [
+      "Loved by parents worldwide",
+      "Loved by more than 400,000 parents worldwide",
+      "Available on iPhone and Android",
+      "Privacy-conscious baby tracking",
+      "Supportive AI insights, not medical diagnosis",
+    ],
+  },
+  seoSection: {
+    title: "One calm baby tracker app for your whole routine",
+    paragraphs: [
+      "Soriva is a baby tracker app for parents who want feeding, sleep, diapers, and growth in one place—not scattered across notebooks and messages. Use it as a newborn tracker from day one, a baby feeding tracker for nursing and bottles, a baby sleep tracker for naps and nights, and a diaper tracker when pediatricians ask about daily counts.",
+      "Caregiver sync keeps mom, dad, grandparents, and nannies on the same baby log. When appointment day arrives, export a pediatrician report or doctor report for the timeframe you choose instead of guessing from memory. Soriva is a baby routine tracker and baby care tracker built for real households—calm, clear, and respectful of how sensitive baby data is.",
+    ],
+  },
+  downloadMicro: {
+    afterFeaturesTitle: "Start tracking free",
+    afterFeaturesSubtitle:
+      "No paper notes. No guessing. Track feeds, sleep, diapers, growth and routines in one calm baby log app.",
+  },
+  aiDisclaimer:
+    "AI insights are supportive and informational only. Soriva does not provide medical advice and does not replace your pediatrician.",
   story: {
     eyebrow: "Notifications",
     title: "Notifications that keep you informed without turning the app into noise.",
@@ -132,7 +204,8 @@ const en: PremiumLandingMessages = {
       {
         eyebrow: "AI Insights",
         title: "Patterns become guidance instead of more data to manage.",
-        description: "AI summaries turn recent activity into useful recommendations and a clearer sense of your baby's rhythm, without making the product feel noisy or clinical.",
+        description:
+          "AI summaries turn recent activity into useful recommendations and a clearer sense of your baby's rhythm, without making the product feel noisy or clinical. AI insights are supportive and informational only—not medical advice.",
         accent: "Confidence without overwhelm.",
       },
       {
@@ -166,35 +239,40 @@ const en: PremiumLandingMessages = {
     ],
   },
   reviews: {
-    eyebrow: "Trust",
-    title: "Built to feel reassuring from the first minute.",
-    description: "Parents do not need more pressure. They need something dependable, polished, and calm enough to trust every day.",
+    eyebrow: "Early feedback",
+    title: "Parents who want less chaos in daily tracking.",
+    description:
+      "Soriva is still growing. Early parents tell us they appreciate a calm interface, shared caregiver sync, and doctor-ready summaries—without pressure or fake hype.",
     appStoreLabel: "App Store",
-    appStoreNote: "Loved for simplicity",
+    appStoreNote: "Available on iPhone",
     googlePlayLabel: "Google Play",
-    googlePlayNote: "Trusted by daily users",
+    googlePlayNote: "Available on Android",
     items: [
       {
-        quote: "It feels calm in the same way the best parenting products do. I open it and immediately know what happened today.",
-        name: "Emma R.",
-        role: "First-time mom",
+        quote:
+          "I wanted one place for feeds and sleep without the app feeling clinical. Soriva stays calm even on messy days.",
+        name: "Early parent feedback",
+        role: "First weeks at home",
       },
       {
-        quote: "Sleep predictions alone made evenings less stressful. The app feels thoughtful instead of noisy.",
-        name: "Daniel & Sofija",
-        role: "Parents of a 6-month-old",
+        quote:
+          "Caregiver sync helped our handoffs—fewer texts asking what happened during the last nap.",
+        name: "Early parent feedback",
+        role: "Two-caregiver household",
       },
       {
-        quote: "We share tracking with grandma and our nanny, and everyone stays in sync without a dozen messages.",
-        name: "Milda K.",
-        role: "Working parent",
+        quote:
+          "Exporting a summary before a checkup was easier than trying to remember the week from memory.",
+        name: "Early parent feedback",
+        role: "Pediatrician visit prep",
       },
     ],
   },
   finalCta: {
-    eyebrow: "Final CTA",
-    title: "Ready for calmer days?",
-    description: "Start with a beautifully clear routine for sleep, feeds, diapers, and insights. Everything important, without the noise.",
+    eyebrow: "Download",
+    title: "Start tracking free",
+    description:
+      "No paper notes. No guessing. One simple baby log for feeds, sleep, diapers, growth, and pediatrician-ready reports. Available on App Store and Google Play.",
   },
 };
 
@@ -203,6 +281,7 @@ const lt: PremiumLandingMessages = {
   nav: { story: "Istorija", features: "Funkcijos", reviews: "Atsiliepimai", download: "Atsisiųsti" },
   downloadMenu: { ariaLabel: "Atsisiųsti programėlę", iphone: "Atsisiųsti į iPhone", googlePlay: "Gauti per Google Play" },
   hero: {
+    ...en.hero,
     badge: "Ramus sekimas šiuolaikiniams tėvams",
     title: "Miegokite ramiau. Sekite mažiau. Mėgaukitės kūdikiu labiau.",
     description: "Sekite miegą, maitinimą, sauskelnes, rutiną ir AI įžvalgas vienoje ramioje, gražioje programėlėje.",
@@ -264,7 +343,7 @@ const es: PremiumLandingMessages = {
   ...en,
   nav: { story: "Historia", features: "Funciones", reviews: "Reseñas", download: "Descargar" },
   downloadMenu: { ariaLabel: "Descargar la app", iphone: "Descargar para iPhone", googlePlay: "Consíguela en Google Play" },
-  hero: { badge: "Seguimiento tranquilo para padres modernos", title: "Duerme mejor. Registra menos. Disfruta más de tu bebé.", description: "Registra sueño, alimentación, pañales, rutinas e insights de IA en una app tranquila y bonita.", appStore: "App Store", googlePlay: "Google Play", trustTitle: "En la confianza de padres de todo el mundo", trustSubtitle: "Tranquila, fiable y bellamente simple.", parentAvatarAltPrefix: "Avatar de padre o madre" },
+  hero: { ...en.hero, badge: "Seguimiento tranquilo para padres modernos", title: "Duerme mejor. Registra menos. Disfruta más de tu bebé.", description: "Registra sueño, alimentación, pañales, rutinas e insights de IA en una app tranquila y bonita.", appStore: "App Store", googlePlay: "Google Play", trustTitle: "En la confianza de padres de todo el mundo", trustSubtitle: "Tranquila, fiable y bellamente simple.", parentAvatarAltPrefix: "Avatar de padre o madre" },
   story: { eyebrow: "Notificaciones", title: "Notificaciones que te mantienen informado sin convertir la app en ruido.", description: "Actualizaciones en tiempo real, recordatorios y alertas importantes te ayudan a seguir el día desde cualquier lugar sin abrir la app constantemente.", note: "Pensada para sentirse clara, oportuna y realmente útil cuando necesitas una visión rápida." },
   features: { eyebrow: "Funciones", title: "Todo lo esencial, ordenado como realmente debería estar.", items: [
     { eyebrow: "Sincronización", title: "Todos los que cuidan a tu bebé permanecen perfectamente sincronizados.", description: "Padres, abuelos y otros cuidadores pueden seguir la misma línea de tiempo, las mismas notas y el mismo ritmo sin perseguirse por mensajes.", accent: "Cuidado compartido sin fricción." },
@@ -290,7 +369,7 @@ const fr: PremiumLandingMessages = {
   ...en,
   nav: { story: "Histoire", features: "Fonctionnalités", reviews: "Avis", download: "Télécharger" },
   downloadMenu: { ariaLabel: "Télécharger l'application", iphone: "Télécharger pour iPhone", googlePlay: "Disponible sur Google Play" },
-  hero: { badge: "Un suivi apaisant pour les parents d'aujourd'hui", title: "Dormez mieux. Notez moins. Profitez davantage de votre bébé.", description: "Suivez le sommeil, l'alimentation, les couches, les routines et les insights IA dans une seule application calme et élégante.", appStore: "App Store", googlePlay: "Google Play", trustTitle: "Adoptée par des parents dans le monde entier", trustSubtitle: "Calme, fiable et magnifiquement simple.", parentAvatarAltPrefix: "Avatar de parent" },
+  hero: { ...en.hero, badge: "Un suivi apaisant pour les parents d'aujourd'hui", title: "Dormez mieux. Notez moins. Profitez davantage de votre bébé.", description: "Suivez le sommeil, l'alimentation, les couches, les routines et les insights IA dans une seule application calme et élégante.", appStore: "App Store", googlePlay: "Google Play", trustTitle: "Adoptée par des parents dans le monde entier", trustSubtitle: "Calme, fiable et magnifiquement simple.", parentAvatarAltPrefix: "Avatar de parent" },
   story: { eyebrow: "Notifications", title: "Des notifications qui vous informent sans transformer l'app en bruit permanent.", description: "Mises à jour en direct, rappels et alertes importantes vous aident à suivre la journée où que vous soyez, sans devoir ouvrir l'application en permanence.", note: "Conçue pour être claire, utile et vraiment pertinente quand vous avez besoin d'un aperçu rapide." },
   features: { eyebrow: "Fonctionnalités", title: "Chaque détail essentiel, organisé comme il devrait l'être.", items: [
     { eyebrow: "Synchronisation", title: "Toutes les personnes qui s'occupent de votre bébé restent parfaitement synchronisées.", description: "Parents, grands-parents et autres aidants peuvent suivre la même chronologie, les mêmes notes et le même rythme sans courir après les informations dans les messages.", accent: "Un partage simple et fluide." },
@@ -316,7 +395,7 @@ const de: PremiumLandingMessages = {
   ...en,
   nav: { story: "Story", features: "Funktionen", reviews: "Bewertungen", download: "Download" },
   downloadMenu: { ariaLabel: "App herunterladen", iphone: "Für iPhone laden", googlePlay: "Bei Google Play herunterladen" },
-  hero: { badge: "Ruhiges Tracking für moderne Eltern", title: "Besser schlafen. Weniger tracken. Dein Baby mehr genießen.", description: "Verfolge Schlaf, Füttern, Windeln, Routinen und KI-Insights in einer ruhigen, schönen App.", appStore: "App Store", googlePlay: "Google Play", trustTitle: "Von Eltern weltweit geschätzt", trustSubtitle: "Ruhig, verlässlich und angenehm einfach.", parentAvatarAltPrefix: "Eltern-Avatar" },
+  hero: { ...en.hero, badge: "Ruhiges Tracking für moderne Eltern", title: "Besser schlafen. Weniger tracken. Dein Baby mehr genießen.", description: "Verfolge Schlaf, Füttern, Windeln, Routinen und KI-Insights in einer ruhigen, schönen App.", appStore: "App Store", googlePlay: "Google Play", trustTitle: "Von Eltern weltweit geschätzt", trustSubtitle: "Ruhig, verlässlich und angenehm einfach.", parentAvatarAltPrefix: "Eltern-Avatar" },
   story: { eyebrow: "Benachrichtigungen", title: "Benachrichtigungen, die dich informieren, ohne die App in Lärm zu verwandeln.", description: "Live-Updates, Erinnerungen und wichtige Hinweise helfen dir, den Tag überall im Blick zu behalten, ohne die App ständig öffnen zu müssen.", note: "So gestaltet, dass es klar, pünktlich und wirklich hilfreich wirkt, wenn du einen schnellen Überblick brauchst." },
   features: { eyebrow: "Funktionen", title: "Alles Wichtige, so angeordnet, wie es sein sollte.", items: [
     { eyebrow: "Betreuer-Sync", title: "Alle, die sich um dein Baby kümmern, bleiben wunderbar synchron.", description: "Eltern, Großeltern und andere Betreuungspersonen sehen dieselbe Zeitleiste, dieselben Notizen und denselben Rhythmus, ohne Informationen in Chats nachverfolgen zu müssen.", accent: "Gemeinsame Betreuung ohne Reibung." },
@@ -342,7 +421,7 @@ const it: PremiumLandingMessages = {
   ...en,
   nav: { story: "Storia", features: "Funzioni", reviews: "Recensioni", download: "Scarica" },
   downloadMenu: { ariaLabel: "Scarica l'app", iphone: "Scarica per iPhone", googlePlay: "Scaricala da Google Play" },
-  hero: { badge: "Monitoraggio calmo per genitori moderni", title: "Dormi meglio. Traccia meno. Goditi di più il tuo bambino.", description: "Monitora sonno, alimentazione, pannolini, routine e insight IA in un'unica app calma e bellissima.", appStore: "App Store", googlePlay: "Google Play", trustTitle: "Scelta da genitori in tutto il mondo", trustSubtitle: "Calma, affidabile e splendidamente semplice.", parentAvatarAltPrefix: "Avatar genitore" },
+  hero: { ...en.hero, badge: "Monitoraggio calmo per genitori moderni", title: "Dormi meglio. Traccia meno. Goditi di più il tuo bambino.", description: "Monitora sonno, alimentazione, pannolini, routine e insight IA in un'unica app calma e bellissima.", appStore: "App Store", googlePlay: "Google Play", trustTitle: "Scelta da genitori in tutto il mondo", trustSubtitle: "Calma, affidabile e splendidamente semplice.", parentAvatarAltPrefix: "Avatar genitore" },
   story: { eyebrow: "Notifiche", title: "Notifiche che ti tengono informato senza trasformare l'app in rumore.", description: "Aggiornamenti live, promemoria e avvisi importanti ti aiutano a seguire la giornata ovunque ti trovi, senza aprire l'app di continuo.", note: "Pensata per essere chiara, puntuale e davvero utile quando ti serve una panoramica veloce." },
   features: { eyebrow: "Funzioni", title: "Ogni dettaglio essenziale, organizzato come dovrebbe essere.", items: [
     { eyebrow: "Sincronizzazione caregiver", title: "Chiunque si occupi del tuo bambino resta perfettamente sincronizzato.", description: "Genitori, nonni e altri caregiver possono seguire la stessa timeline, le stesse note e lo stesso ritmo senza rincorrersi nei messaggi.", accent: "Cura condivisa senza attriti." },
@@ -368,7 +447,7 @@ const pt: PremiumLandingMessages = {
   ...en,
   nav: { story: "História", features: "Funcionalidades", reviews: "Avaliações", download: "Baixar" },
   downloadMenu: { ariaLabel: "Baixar aplicativo", iphone: "Baixar para iPhone", googlePlay: "Baixar no Google Play" },
-  hero: { badge: "Acompanhamento tranquilo para pais modernos", title: "Durma melhor. Registre menos. Aproveite mais o seu bebê.", description: "Acompanhe sono, alimentação, fraldas, rotinas e insights de IA em um app calmo e bonito.", appStore: "App Store", googlePlay: "Google Play", trustTitle: "Confiado por pais no mundo todo", trustSubtitle: "Calmo, confiável e lindamente simples.", parentAvatarAltPrefix: "Avatar de pai ou mãe" },
+  hero: { ...en.hero, badge: "Acompanhamento tranquilo para pais modernos", title: "Durma melhor. Registre menos. Aproveite mais o seu bebê.", description: "Acompanhe sono, alimentação, fraldas, rotinas e insights de IA em um app calmo e bonito.", appStore: "App Store", googlePlay: "Google Play", trustTitle: "Confiado por pais no mundo todo", trustSubtitle: "Calmo, confiável e lindamente simples.", parentAvatarAltPrefix: "Avatar de pai ou mãe" },
   story: { eyebrow: "Notificações", title: "Notificações que mantêm você informado sem transformar o app em ruído.", description: "Atualizações em tempo real, lembretes e alertas importantes ajudam você a acompanhar o dia de qualquer lugar, sem abrir o app o tempo todo.", note: "Feito para parecer claro, pontual e realmente útil quando você precisa de uma visão rápida." },
   features: { eyebrow: "Funcionalidades", title: "Cada detalhe essencial, organizado como realmente deveria estar.", items: [
     { eyebrow: "Sincronização", title: "Todos que cuidam do seu bebê permanecem lindamente sincronizados.", description: "Pais, avós e outros cuidadores podem acompanhar a mesma linha do tempo, as mesmas notas e o mesmo ritmo sem correr atrás de atualizações em mensagens.", accent: "Cuidado compartilhado sem atrito." },
@@ -394,7 +473,7 @@ const pl: PremiumLandingMessages = {
   ...en,
   nav: { story: "Historia", features: "Funkcje", reviews: "Opinie", download: "Pobierz" },
   downloadMenu: { ariaLabel: "Pobierz aplikację", iphone: "Pobierz na iPhone'a", googlePlay: "Pobierz z Google Play" },
-  hero: { badge: "Spokojne śledzenie dla nowoczesnych rodziców", title: "Śpij lepiej. Notuj mniej. Ciesz się dzieckiem bardziej.", description: "Śledź sen, karmienie, pieluchy, rutyny i insighty AI w jednej spokojnej i pięknej aplikacji.", appStore: "App Store", googlePlay: "Google Play", trustTitle: "Zaufana przez rodziców na całym świecie", trustSubtitle: "Spokojna, niezawodna i pięknie prosta.", parentAvatarAltPrefix: "Avatar rodzica" },
+  hero: { ...en.hero, badge: "Spokojne śledzenie dla nowoczesnych rodziców", title: "Śpij lepiej. Notuj mniej. Ciesz się dzieckiem bardziej.", description: "Śledź sen, karmienie, pieluchy, rutyny i insighty AI w jednej spokojnej i pięknej aplikacji.", appStore: "App Store", googlePlay: "Google Play", trustTitle: "Zaufana przez rodziców na całym świecie", trustSubtitle: "Spokojna, niezawodna i pięknie prosta.", parentAvatarAltPrefix: "Avatar rodzica" },
   story: { eyebrow: "Powiadomienia", title: "Powiadomienia, które informują, nie zamieniając aplikacji w hałas.", description: "Aktualizacje na żywo, przypomnienia i ważne alerty pomagają śledzić dzień z dowolnego miejsca bez ciągłego otwierania aplikacji.", note: "Zaprojektowana tak, aby była czytelna, na czas i naprawdę pomocna, gdy potrzebujesz szybkiego podglądu." },
   features: { eyebrow: "Funkcje", title: "Każdy ważny szczegół, ułożony dokładnie tak, jak powinien.", items: [
     { eyebrow: "Synchronizacja opiekunów", title: "Wszyscy opiekujący się dzieckiem pozostają idealnie zsynchronizowani.", description: "Rodzice, dziadkowie i inni opiekunowie mogą śledzić tę samą oś czasu, te same notatki i ten sam rytm bez gonienia za aktualizacjami w wiadomościach.", accent: "Wspólna opieka bez tarcia." },
@@ -420,7 +499,7 @@ const ru: PremiumLandingMessages = {
   ...en,
   nav: { story: "История", features: "Функции", reviews: "Отзывы", download: "Скачать" },
   downloadMenu: { ariaLabel: "Скачать приложение", iphone: "Скачать для iPhone", googlePlay: "Скачать в Google Play" },
-  hero: { badge: "Спокойный трекинг для современных родителей", title: "Спите лучше. Отмечайте меньше. Больше наслаждайтесь ребенком.", description: "Отслеживайте сон, кормления, подгузники, рутины и AI-инсайты в одном спокойном и красивом приложении.", appStore: "App Store", googlePlay: "Google Play", trustTitle: "Родители по всему миру доверяют нам", trustSubtitle: "Спокойно, надежно и красиво просто.", parentAvatarAltPrefix: "Аватар родителя" },
+  hero: { ...en.hero, badge: "Спокойный трекинг для современных родителей", title: "Спите лучше. Отмечайте меньше. Больше наслаждайтесь ребенком.", description: "Отслеживайте сон, кормления, подгузники, рутины и AI-инсайты в одном спокойном и красивом приложении.", appStore: "App Store", googlePlay: "Google Play", trustTitle: "Родители по всему миру доверяют нам", trustSubtitle: "Спокойно, надежно и красиво просто.", parentAvatarAltPrefix: "Аватар родителя" },
   story: { eyebrow: "Уведомления", title: "Уведомления, которые держат в курсе, не превращая приложение в шум.", description: "Живые обновления, напоминания и важные уведомления помогают следить за днем из любого места, не открывая приложение постоянно.", note: "Сделано так, чтобы все ощущалось понятным, своевременным и действительно полезным, когда нужен быстрый обзор." },
   features: { eyebrow: "Функции", title: "Все важное, организованное именно так, как и должно быть.", items: [
     { eyebrow: "Синхронизация", title: "Все, кто заботится о вашем ребенке, остаются прекрасно синхронизированы.", description: "Родители, бабушки, дедушки и другие помощники могут видеть одну и ту же ленту, те же заметки и тот же ритм, не догоняя друг друга в сообщениях.", accent: "Совместная забота без лишних трений." },

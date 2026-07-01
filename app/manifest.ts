@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Baby Tracker - Soriva",
     short_name: "Baby Tracker",
-    description: "Simple baby tracker app for feeding, sleep, diapers, pumping and daily baby routines.",
+    description: "Baby tracker app for feeding, sleep, diapers, growth, caregiver sync, and pediatrician-ready reports.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

@@ -5,35 +5,54 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import LanguagePicker from "@/components/LanguagePicker";
 import AnalyticsRouteTracker from "@/components/AnalyticsRouteTracker";
+import JsonLd from "@/components/JsonLd";
 import { getLocaleFromCookies, getMessages } from "@/i18n/server";
 import { MESSAGES_BY_LOCALE } from "@/i18n/messages";
 import type { Locale } from "@/i18n/locales";
 import { GA_MEASUREMENT_ID } from "@/lib/analytics";
+import { APP_STORE_ID, BRAND_NAME } from "@/lib/constants";
+import { mobileApplicationJsonLd, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://babytrackersoriva.com"),
-  title: "Baby Tracker - Soriva",
-  description: "Simple baby tracker app for feeding, sleep, diapers, pumping and daily baby routines.",
+  title: {
+    default: "Baby Tracker - Soriva",
+    template: "%s | Baby Tracker - Soriva",
+  },
+  description:
+    "Baby tracker app for feeding, sleep, diapers, growth, and daily routines. Sync with caregivers and export pediatrician-ready reports.",
   manifest: "/manifest.webmanifest",
+  alternates: {
+    canonical: "https://babytrackersoriva.com",
+  },
+  other: {
+    "apple-itunes-app": `app-id=${APP_STORE_ID}`,
+  },
   openGraph: {
     title: "Baby Tracker - Soriva",
-    description: "Simple baby tracker app for feeding, sleep, diapers, pumping and daily baby routines.",
-    siteName: "Baby Tracker - Soriva",
+    description:
+      "Baby tracker app for feeding, sleep, diapers, growth, and daily routines. Sync with caregivers and export pediatrician-ready reports.",
+    siteName: BRAND_NAME,
     type: "website",
+    locale: "en_US",
+    url: "https://babytrackersoriva.com",
   },
   twitter: {
     title: "Baby Tracker - Soriva",
-    description: "Simple baby tracker app for feeding, sleep, diapers, pumping and daily baby routines.",
+    description:
+      "Baby tracker app for feeding, sleep, diapers, growth, and daily routines. Sync with caregivers and export pediatrician-ready reports.",
     card: "summary_large_image",
   },
   icons: {
@@ -63,6 +82,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen antialiased flex flex-col`}
       >
+        <JsonLd data={[websiteJsonLd(), organizationJsonLd(), mobileApplicationJsonLd()]} />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"

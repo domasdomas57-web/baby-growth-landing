@@ -2,12 +2,8 @@
 
 import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
-
-const GOOGLE_PLAY_URL =
-  "https://play.google.com/store/apps/details?id=com.domce23.babygrowthtracker&hl=en";
-
-const APP_STORE_URL =
-  "https://apps.apple.com/lt/app/baby-tracker-ai-soriva/id6759395777";
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/lib/constants";
+import { SITEMAP_SEO_SLUGS } from "@/lib/seoPages";
 
 export default function Footer({
   messages,
@@ -75,7 +71,7 @@ export default function Footer({
           </div>
         </div>
 
-        <div className="grid gap-10 pt-8 sm:grid-cols-2 lg:grid-cols-[1fr_auto_auto] lg:items-start">
+        <div className="grid gap-10 pt-8 sm:grid-cols-2 lg:grid-cols-[1fr_auto_auto_auto] lg:items-start">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700/70">Contact</p>
             <a
@@ -92,7 +88,21 @@ export default function Footer({
             <div className="flex flex-col gap-3 text-sm text-slate-600">
               <Link href="/privacy" className="transition hover:text-slate-950">Privacy Policy</Link>
               <Link href="/terms" className="transition hover:text-slate-950">Terms</Link>
+              <a href={`mailto:${messages.email}`} className="transition hover:text-slate-950">Contact</a>
+              <a href={APP_STORE_URL} target="_blank" rel="noreferrer" className="transition hover:text-slate-950">App Store</a>
+              <a href={GOOGLE_PLAY_URL} target="_blank" rel="noreferrer" className="transition hover:text-slate-950">Google Play</a>
               <a href="#top" className="transition hover:text-slate-950">Back to top</a>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700/70">Baby tracker guides</p>
+            <div className="flex flex-col gap-2 text-sm text-slate-600">
+              {SITEMAP_SEO_SLUGS.map((slug) => (
+                <Link key={slug} href={`/${slug}`} className="transition hover:text-slate-950">
+                  {slug.replace(/-/g, " ")}
+                </Link>
+              ))}
             </div>
           </div>
 
