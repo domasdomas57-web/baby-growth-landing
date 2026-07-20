@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Contact form email (SMTP)
 
-The footer contact form posts to `/api/contact` and sends an email to `infobysoriva@gmail.com`.
+The footer contact form posts to `/api/contact` and sends an email to `info@babytrackersoriva.com`.
 
 Set these environment variables (e.g. in `.env.local` for local dev, and in your hosting provider for production):
 

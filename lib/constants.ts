@@ -9,6 +9,6 @@ export const GOOGLE_PLAY_URL =
 
 export const APP_STORE_ID = "6759395777";
 
-export const CONTACT_EMAIL = "infobysoriva@gmail.com";
+export const CONTACT_EMAIL = "info@babytrackersoriva.com";
 
 export const BRAND_NAME = "Baby Tracker - Soriva";
