@@ -1,14 +1,15 @@
 import type { MetadataRoute } from "next";
-
-const BASE_URL = "https://babytrackersoriva.com";
+import { getSiteUrl } from "@/lib/seo-config";
 
 export default function robots(): MetadataRoute.Robots {
+  const siteUrl = getSiteUrl();
+
   return {
     rules: {
       userAgent: "*",
-      allow: "/",
+      allow: ["/", "/blog", "/blog/"],
     },
-    sitemap: `${BASE_URL}/sitemap.xml`,
-    host: BASE_URL,
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }

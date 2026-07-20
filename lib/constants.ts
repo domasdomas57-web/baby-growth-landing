@@ -1,4 +1,5 @@
-export const BASE_URL = "https://babytrackersoriva.com";
+export const BASE_URL =
+  process.env.SITE_URL?.trim().replace(/\/$/, "") || "https://babytrackersoriva.com";
 
 export const APP_STORE_URL =
   "https://apps.apple.com/lt/app/baby-tracker-ai-soriva/id6759395777";

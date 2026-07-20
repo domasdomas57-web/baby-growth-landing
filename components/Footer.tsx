@@ -86,6 +86,7 @@ export default function Footer({
           <div className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700/70">Links</p>
             <div className="flex flex-col gap-3 text-sm text-slate-600">
+              <Link href="/blog" className="transition hover:text-slate-950">Blog</Link>
               <Link href="/privacy" className="transition hover:text-slate-950">Privacy Policy</Link>
               <Link href="/terms" className="transition hover:text-slate-950">Terms</Link>
               <a href={`mailto:${messages.email}`} className="transition hover:text-slate-950">Contact</a>
